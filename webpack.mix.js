@@ -31,6 +31,7 @@ mix
   .setPublicPath('dist')
   .browserSync({
     proxy: false,
+    online: true,
     server: 'dist',
     files: [
       'dist/**/*'

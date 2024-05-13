@@ -29,7 +29,6 @@
     "sass-loader": "^12.4.0"
   },
   "dependencies": {
-    "gsap": "^3.12.5",
-    "jquery": "^3.7.1"
+    "jquery": "^3.7.0"
   }
 }
