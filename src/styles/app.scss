@@ -1,11 +1,6 @@
 @import "type";
 $border-margin:15px;
 
-@font-face {
-	font-family: "Syne";
-	src: url("../assets/Syne.ttf") format("truetype");
-}
-
 html {
     width:100%;
     height:100%;
@@ -36,22 +31,23 @@ body {
 
     .page__container {
         box-sizing: border-box;
-        padding:45px;
         margin: 15px;
         width: calc(100vw - 30px);
         height: calc(100vh - 30px);
         overflow: hidden;
-        background: linear-gradient(rgba(0, 0, 0, 0.85),rgba(0, 0, 0, 0.85)),url(/assets/bg.png) no-repeat center center fixed;
+        background: linear-gradient(rgba(0, 0, 0, 0.85),rgba(0, 0, 0, 0.85)),url(/assets/images/bg.png) no-repeat center center fixed;
         border-radius: 50px;
         box-shadow: 0 0 10px 0px #404040;
         display: flex;
         flex-direction: row-reverse;
+        justify-content: space-between;
 
         .y-line{
             border: 1px solid #95FF00;
             margin: 0;
             height:100vh;
-            margin-top: -50px
+            margin-top: -50px;
+            width:0;
         }
 
         // .x-line{
@@ -91,7 +87,7 @@ body {
             }
 
             &~ .left-column{
-                width: 75%;
+                width: 70%;
                 transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
 
                 .page__title {
@@ -107,11 +103,11 @@ body {
         }
 
         .left-column {
+            margin: 45px 0px 45px 45px;
             display: flex;
-            margin: 0;
             padding: 0;
             flex-direction: column;
-            width: 95%;
+            width: 70%;
             overflow:visible;
             transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
 
@@ -129,7 +125,6 @@ body {
             .page__title {
                 display: flex;
                 flex-direction: column;
-                width: 95%;
                 overflow: hidden;
                 transition: width 0.2s cubic-bezier(0.45, 0, 0.55, 1);
             }
@@ -137,7 +132,6 @@ body {
             .content {
                 display: flex;
                 flex-direction: column;
-                width: 95%;
                 overflow: hidden;
             }
         }
@@ -149,10 +143,11 @@ body {
             margin: 0;
             padding: 0;
             width: 5%;
+            border-left: 1px solid #95FF00;
             transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
 
             .navbar{
-                margin: 0;
+                margin: 45px 45px 45px 0px;
                 padding: 0;
                 display:flex;
                 justify-content: flex-end;
@@ -187,11 +182,11 @@ body {
             }
 
             .credits{
+                margin: 45px 45px 45px 0px;
                 text-align: end;
                 white-space: nowrap;
                 overflow: hidden;
                 opacity:0;
-                margin:0;
                 visibility: hidden;
                 transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
 

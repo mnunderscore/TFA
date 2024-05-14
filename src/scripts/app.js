@@ -1,3 +1,5 @@
+'use strict'
+
 console.clear();
 
 const rand = ( max = 1, min = 0, { round = false } = {} ) => {
@@ -28,16 +30,16 @@ const track = [
 
 const directions = ['left','right','up','down']
 const startDirection = directions[rand(3,0,{round:true})];
-const whereGoing = startDirection;
-const lastDirection = startDirection;
+let whereGoing = startDirection;
+let lastDirection = startDirection;
 const startPosition = [rand(8,1,{round:true}),rand(8,1,{round:true})]
-const currentPosition = startPosition;
-const lastPosition = startPosition;
+let currentPosition = startPosition;
+let lastPosition = startPosition;
 
 if (startDirection === 'left' || startDirection === 'right') {
-    track[startPosition[0]][startPosition[1]] = 10;
+    track[startPosition[1]][startPosition[0]] = 10;
 } else {
-    track[startPosition[0]][startPosition[1]] = 11;
+    track[startPosition[1]][startPosition[0]] = 11;
 }
 
 console.table(track);
@@ -46,71 +48,35 @@ console.log('startDirection:' + startDirection);
 console.log('startPosition:' + startPosition);
 console.log('whereGoing:' + whereGoing);
 
+let possiblePosition = currentPosition;
+
 switch (whereGoing) {
     case 'left':
-        currentPosition[1] -= 1;
+        possiblePosition[0] = currentPosition[0] - 1;
         break;
     case 'right':
-        currentPosition[1] += 1;
+        possiblePosition[0] = currentPosition[0] + 1;
         break;
     case 'up':
-        currentPosition[0] -= 1;
+        possiblePosition[1] = currentPosition[1] - 1;
         break;
     case 'down':
-        currentPosition[0] += 1;
+        possiblePosition[1] = currentPosition[1] + 1;
         break;
 }
 
-if(lastDirection === 'left' && whereGoing === 'left') {
-    track[currentPosition[0]][currentPosition[1]] = 1;
-} else if (lastDirection === 'right' && whereGoing === 'right') {
-    track[currentPosition[0]][currentPosition[1]] = 1;
-} else if (lastDirection === 'up' && whereGoing === 'up') {
-    track[currentPosition[0]][currentPosition[1]] = 2;
-} else if (lastDirection === 'down' && whereGoing === 'down') {
-    track[currentPosition[0]][currentPosition[1]] = 2;
-} else if (lastDirection === 'down' && whereGoing === 'right') {
-    track[currentPosition[0]][currentPosition[1]] = 3;
-} else if (lastDirection === 'down' && whereGoing === 'left') {
-    track[currentPosition[0]][currentPosition[1]] = 4;
-} else if (lastDirection === 'up' && whereGoing === 'right') {
-    track[currentPosition[0]][currentPosition[1]] = 5;
-} else if (lastDirection === 'up' && whereGoing === 'left') {
-    track[currentPosition[0]][currentPosition[1]] = 6;
-};
+
+
+console.log('lastDirection:' + lastDirection)
+
+console.log('------------GOING INTO FOR------------');
+
 
 
 for (let i = 0; i < 5; i++) {
-    let whereGoing;
 
-    do {
-        if (currentPosition[1] == 0) {
-            whereGoing = directions[rand(3,2,{round:true})];
-        } else if (currentPosition[1] == 9) {
-            whereGoing = directions[rand(3,2,{round:true})];
-        } else if (currentPosition[0] == 0) {
-            whereGoing = directions[rand(1,0,{round:true})];
-        } else if (currentPosition[0] == 9) {
-            whereGoing = directions[rand(1,0,{round:true})];
-        } else {
-            whereGoing = directions[rand(3,0,{round:true})];
-        }
-
-        switch (whereGoing) {
-            case 'left':
-                currentPosition[1] -= 1;
-                break;
-            case 'right':
-                currentPosition[1] += 1;
-                break;
-            case 'up':
-                currentPosition[0] -= 1;
-                break;
-            case 'down':
-                currentPosition[0] += 1;
-                break;
-        }
-    } while (track[currentPosition[0]][currentPosition[1]] !== 0);
+    console.log('whereGoing:' + whereGoing);
+    console.log('currentPosition:' + currentPosition);
 
     // 1 = horizontal
     // 2 = vertical
@@ -119,25 +85,72 @@ for (let i = 0; i < 5; i++) {
     // 5 = haut vers droite
     // 6 = haut vers gauche
 
+    console.log('lastDirection:' + lastDirection);
+
     if(lastDirection === 'left' && whereGoing === 'left') {
-        track[currentPosition[0]][currentPosition[1]] = 1;
+        track[currentPosition[1]][currentPosition[0]] = 1;
+    } else if (lastDirection === 'left' && whereGoing === 'up') {
+        track[currentPosition[1]][currentPosition[0]] = 5;
+    } else if (lastDirection === 'left' && whereGoing === 'down') {
+        track[currentPosition[1]][currentPosition[0]] = 3;
     } else if (lastDirection === 'right' && whereGoing === 'right') {
-        track[currentPosition[0]][currentPosition[1]] = 1;
+        track[currentPosition[1]][currentPosition[0]] = 1;
+    } else if (lastDirection === 'right' && whereGoing === 'up') {
+        track[currentPosition[1]][currentPosition[0]] = 6;
+    } else if (lastDirection === 'right' && whereGoing === 'down') {
+        track[currentPosition[1]][currentPosition[0]] = 4;
     } else if (lastDirection === 'up' && whereGoing === 'up') {
-        track[currentPosition[0]][currentPosition[1]] = 2;
-    } else if (lastDirection === 'down' && whereGoing === 'down') {
-        track[currentPosition[0]][currentPosition[1]] = 2;
-    } else if (lastDirection === 'down' && whereGoing === 'right') {
-        track[currentPosition[0]][currentPosition[1]] = 3;
-    } else if (lastDirection === 'down' && whereGoing === 'left') {
-        track[currentPosition[0]][currentPosition[1]] = 4;
+        track[currentPosition[1]][currentPosition[0]] = 2;
     } else if (lastDirection === 'up' && whereGoing === 'right') {
-        track[currentPosition[0]][currentPosition[1]] = 5;
+        track[currentPosition[1]][currentPosition[0]] = 3;
     } else if (lastDirection === 'up' && whereGoing === 'left') {
-        track[currentPosition[0]][currentPosition[1]] = 6;
+        track[currentPosition[1]][currentPosition[0]] = 4;
+    } else if (lastDirection === 'down' && whereGoing === 'down') {
+        track[currentPosition[1]][currentPosition[0]] = 2;
+    } else if (lastDirection === 'down' && whereGoing === 'right') {
+        track[currentPosition[1]][currentPosition[0]] = 5;
+    } else if (lastDirection === 'down' && whereGoing === 'left') {
+        track[currentPosition[1]][currentPosition[0]] = 6;
     };
 
-    const lastPosition = currentPosition;
+    
+
+    lastDirection = whereGoing;
+
+    do {
+        possiblePosition = currentPosition;
+        if (currentPosition[0] == 0) {
+            whereGoing = directions[rand(3,2,{round:true})];
+        } else if (currentPosition[0] == 9) {
+            whereGoing = directions[rand(3,2,{round:true})];
+        } else if (currentPosition[1] == 0) {
+            whereGoing = directions[rand(1,0,{round:true})];
+        } else if (currentPosition[1] == 9) {
+            whereGoing = directions[rand(1,0,{round:true})];
+        } else {
+            whereGoing = directions[rand(3,0,{round:true})];
+        }
+
+        switch (whereGoing) {
+            case 'left':
+                possiblePosition[0] = currentPosition[0] - 1;
+                break;
+            case 'right':
+                possiblePosition[0] = currentPosition[0] + 1;
+                break;
+            case 'up':
+                possiblePosition[1] = currentPosition[1] - 1;
+                break;
+            case 'down':
+                possiblePosition[1] = currentPosition[1] + 1;
+                break;
+        }
+
+        console.log('possiblePosition:' + possiblePosition);
+
+    } while (track[possiblePosition[1]][possiblePosition[0]] !== 0);
+
+    console.log('-----------END-----------');
 };
 
 console.table(track);
@@ -160,10 +173,10 @@ document.addEventListener("DOMContentLoaded", function() {
         canvas.style.width = `${ realWidth }px`;
         canvas.style.height = `${ realHeight }px`;
 
-        ctx.scale( dpr, dpr );
+        canvas.style.transform = "rotate(0deg)";
+        canvas.style.webkitTransform = "rotate(0deg)";
 
-        canvas.style.transform = "rotate(45deg)";
-        canvas.style.webkitTransform = "rotate(45deg)";
+        ctx.scale( dpr, dpr );
 
         body.appendChild( canvas );
     };
@@ -205,7 +218,7 @@ document.addEventListener("DOMContentLoaded", function() {
         for (let i = 0; i < cols; i++) {
             for (let j = 0; j < cols; j++) {
                 ctx.fillStyle = trackMatrix[i][j];
-                ctx.fillRect(i * squareSize, j * squareSize, squareSize, squareSize);
+                ctx.fillRect(j * squareSize, i * squareSize, squareSize, squareSize);
             }
         }
     };
