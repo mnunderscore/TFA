@@ -24,6 +24,16 @@ body {
     overflow: hidden;
     background-color: #F3F3F3;
 
+    .corner__styling {
+        position: absolute;
+        bottom: -250px;
+        right: -250px;
+        width: 550px;
+        height: 550px;
+        background: radial-gradient(circle, rgba(149,255,0,1) 0%, rgba(255,255,255,0) 70%);
+        clip-path: inset(0px 265px 265px 0px round 50px);
+    }
+
     .page__container {
         box-sizing: border-box;
         padding:45px;
@@ -88,10 +98,10 @@ body {
                     width: 100%;
                     transition: width 0.2s cubic-bezier(0.45, 0, 0.55, 1);
 
-                    .title {
-                        font-weight: 600;
-                        transition: font-weight 0.2s cubic-bezier(0.45, 0, 0.55, 1);
-                    }
+                    // .title {
+                    //     font-weight: 600;
+                    //     transition: font-weight 0.2s cubic-bezier(0.45, 0, 0.55, 1);
+                    // }
                 }
             }
         }

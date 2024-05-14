@@ -15,23 +15,29 @@ html {
     &::before {
         content: "";
         display: inline-block;
-        width: 1rem;
-        height: 1rem;
-        background-image: url("/src/assets/star.svg");
+        width: 2rem;
+        height: 2rem;
+        background-image: url("/assets/star.svg");
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
+        position:fixed;
+        top:100px;
+        left:30px;
     }
 
     &::after {
         content: "";
         display: inline-block;
-        width: 1rem;
-        height: 1rem;
-        background-image: url("/src/assets/star.svg");
+        width: 2rem;
+        height: 2rem;
+        background-image: url("/assets/star.svg");
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
+        position:fixed;
+        top:73px;
+        left:740px;
     }
 }
 
@@ -42,7 +48,7 @@ html {
 }
 
 .content__title{
-    font-size: 2.074rem;
+    font-size: 1.44rem;
     font-weight: 600;
 }
 
@@ -58,7 +64,7 @@ html {
 
 .credits {
     font-size: 0.833rem;
-    font-weight: 600;
+    font-weight: 500;
     margin:0;
     color: #FEFEFE;
 }
