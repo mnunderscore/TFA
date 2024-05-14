@@ -27,6 +27,7 @@ body {
         height: 550px;
         background: radial-gradient(circle, rgba(149,255,0,1) 0%, rgba(255,255,255,0) 70%);
         clip-path: inset(0px 265px 265px 0px round 50px);
+        z-index: 0;
     }
 
     .page__container {
@@ -145,6 +146,7 @@ body {
             width: 5%;
             border-left: 1px solid #95FF00;
             transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
+            z-index: 1;
 
             .navbar{
                 margin: 45px 45px 45px 0px;

@@ -28,168 +28,34 @@ const track = [
     [0,0,0,0,0,0,0,0,0,0]
 ];
 
-const directions = ['left','right','up','down']
-const startDirection = directions[rand(3,0,{round:true})];
-let whereGoing = startDirection;
-let lastDirection = startDirection;
-const startPosition = [rand(8,1,{round:true}),rand(8,1,{round:true})]
-let currentPosition = startPosition;
-let lastPosition = startPosition;
+const directions = [0,1,2,3];
+let currentCoords = [rand(9,0,{round:true}),rand(9,0,{round:true})];
+let possibleCoords = [0,0];
 
-if (startDirection === 'left' || startDirection === 'right') {
-    track[startPosition[1]][startPosition[0]] = 10;
-} else {
-    track[startPosition[1]][startPosition[0]] = 11;
-}
-
-console.table(track);
-
-console.log('startDirection:' + startDirection);
-console.log('startPosition:' + startPosition);
-console.log('whereGoing:' + whereGoing);
-
-let possiblePosition = currentPosition;
-
-do {
-    possiblePosition = currentPosition;
-    if (currentPosition[0] == 0) {
-        whereGoing = directions[rand(3,2,{round:true})];
-    } else if (currentPosition[0] == 9) {
-        whereGoing = directions[rand(3,2,{round:true})];
-    } else if (currentPosition[1] == 0) {
-        whereGoing = directions[rand(1,0,{round:true})];
-    } else if (currentPosition[1] == 9) {
-        whereGoing = directions[rand(1,0,{round:true})];
-    }
-
-    switch (whereGoing) {
-        case 'left':
-            possiblePosition[0] = (currentPosition[0] - 1);
-            break;
-        case 'right':
-            possiblePosition[0] = (currentPosition[0] + 1);
-            break;
-        case 'up':
-            possiblePosition[1] = (currentPosition[1] - 1);
-            break;
-        case 'down':
-            possiblePosition[1] = currentPosition[1] + 1;
-            break;
-    }
-
-    console.log('possiblePosition:' + possiblePosition);
-
-} while (track[possiblePosition[1]][possiblePosition[0]] !== 0);
-
-if(lastDirection === 'left' && whereGoing === 'left') {
-    track[currentPosition[1]][currentPosition[0]] = 1;
-} else if (lastDirection === 'left' && whereGoing === 'up') {
-    track[currentPosition[1]][currentPosition[0]] = 5;
-} else if (lastDirection === 'left' && whereGoing === 'down') {
-    track[currentPosition[1]][currentPosition[0]] = 3;
-} else if (lastDirection === 'right' && whereGoing === 'right') {
-    track[currentPosition[1]][currentPosition[0]] = 1;
-} else if (lastDirection === 'right' && whereGoing === 'up') {
-    track[currentPosition[1]][currentPosition[0]] = 6;
-} else if (lastDirection === 'right' && whereGoing === 'down') {
-    track[currentPosition[1]][currentPosition[0]] = 4;
-} else if (lastDirection === 'up' && whereGoing === 'up') {
-    track[currentPosition[1]][currentPosition[0]] = 2;
-} else if (lastDirection === 'up' && whereGoing === 'right') {
-    track[currentPosition[1]][currentPosition[0]] = 3;
-} else if (lastDirection === 'up' && whereGoing === 'left') {
-    track[currentPosition[1]][currentPosition[0]] = 4;
-} else if (lastDirection === 'down' && whereGoing === 'down') {
-    track[currentPosition[1]][currentPosition[0]] = 2;
-} else if (lastDirection === 'down' && whereGoing === 'right') {
-    track[currentPosition[1]][currentPosition[0]] = 5;
-} else if (lastDirection === 'down' && whereGoing === 'left') {
-    track[currentPosition[1]][currentPosition[0]] = 6;
-};
-
-lastDirection = whereGoing;
-
-console.log('lastDirection:' + lastDirection)
-
-console.log('------------GOING INTO FOR------------');
-
-
+track[currentCoords[1]][currentCoords[0]] = 11;
 
 for (let i = 0; i < 5; i++) {
-
-    do {
-        possiblePosition = currentPosition;
-        if (currentPosition[0] == 0) {
-            whereGoing = directions[rand(3,2,{round:true})];
-        } else if (currentPosition[0] == 9) {
-            whereGoing = directions[rand(3,2,{round:true})];
-        } else if (currentPosition[1] == 0) {
-            whereGoing = directions[rand(1,0,{round:true})];
-        } else if (currentPosition[1] == 9) {
-            whereGoing = directions[rand(1,0,{round:true})];
-        } else {
-            whereGoing = directions[rand(3,0,{round:true})];
-        }
-
-        switch (whereGoing) {
-            case 'left':
-                possiblePosition[0] = (currentPosition[0] - 1);
+    possibleCoords = currentCoords;
+    do{
+        const direction = rand(3,0,{round:true});
+        switch (direction) {
+            case 0:
+                possibleCoords[1] = currentCoords[1] - 1;
                 break;
-            case 'right':
-                possiblePosition[0] = (currentPosition[0] + 1);
+            case 1:
+                possibleCoords[0] = currentCoords[0] + 1;
                 break;
-            case 'up':
-                possiblePosition[1] = (currentPosition[1] - 1);
+            case 2:
+                possibleCoords[1] = currentCoords[1] + 1;
                 break;
-            case 'down':
-                possiblePosition[1] = (currentPosition[1] + 1);
+            case 3:
+                possibleCoords[0] = currentCoords[0] - 1;
                 break;
         };
+    } while (track[possibleCoords[1]][possibleCoords[0]] !== 0);
 
-    } while (track[possiblePosition[1]][possiblePosition[0]] !== 0);
-
-    console.log('whereGoing:' + whereGoing);
-    console.log('currentPosition:' + currentPosition);
-
-    // 1 = horizontal
-    // 2 = vertical
-    // 3 = bas vers droite
-    // 4 = bas vers gauche
-    // 5 = haut vers droite
-    // 6 = haut vers gauche
-
-    console.log('lastDirection:' + lastDirection);
-
-    if(lastDirection === 'left' && whereGoing === 'left') {
-        track[currentPosition[1]][currentPosition[0]] = 1;
-    } else if (lastDirection === 'left' && whereGoing === 'up') {
-        track[currentPosition[1]][currentPosition[0]] = 5;
-    } else if (lastDirection === 'left' && whereGoing === 'down') {
-        track[currentPosition[1]][currentPosition[0]] = 3;
-    } else if (lastDirection === 'right' && whereGoing === 'right') {
-        track[currentPosition[1]][currentPosition[0]] = 1;
-    } else if (lastDirection === 'right' && whereGoing === 'up') {
-        track[currentPosition[1]][currentPosition[0]] = 6;
-    } else if (lastDirection === 'right' && whereGoing === 'down') {
-        track[currentPosition[1]][currentPosition[0]] = 4;
-    } else if (lastDirection === 'up' && whereGoing === 'up') {
-        track[currentPosition[1]][currentPosition[0]] = 2;
-    } else if (lastDirection === 'up' && whereGoing === 'right') {
-        track[currentPosition[1]][currentPosition[0]] = 3;
-    } else if (lastDirection === 'up' && whereGoing === 'left') {
-        track[currentPosition[1]][currentPosition[0]] = 4;
-    } else if (lastDirection === 'down' && whereGoing === 'down') {
-        track[currentPosition[1]][currentPosition[0]] = 2;
-    } else if (lastDirection === 'down' && whereGoing === 'right') {
-        track[currentPosition[1]][currentPosition[0]] = 5;
-    } else if (lastDirection === 'down' && whereGoing === 'left') {
-        track[currentPosition[1]][currentPosition[0]] = 6;
-    };
-
-    lastDirection = whereGoing;
-
-
-    console.log('-----------END-----------');
+    track[possibleCoords[1]][possibleCoords[0]] = 1;
+    currentCoords = possibleCoords;
 };
 
 console.table(track);
@@ -222,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const cols = 10;
     const squareSize = realWidth / cols;
-    const color = "red";
+    const color = "black";
 
 
     const draw = () => {
@@ -247,6 +113,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     return "black";
                 case 11:
                     return "black";
+                case "D":
+                    return "red";
                 default:
                     return "white";
             }
