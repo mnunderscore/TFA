@@ -1,3 +1,4 @@
+
 'use strict'
 
 console.clear();
@@ -28,40 +29,49 @@ const track = [
     [0,0,0,0,0,0,0,0,0,0]
 ];
 
-let genCoords = [0,0]
-let checkpoints = [[0,0]] // Initialize checkpoints as an array of arrays
-let pointer = [0,0]
-let closestCheckpoint = checkpoints[0];
-let closestDistance = Infinity; // Initialize closestDistance to Infinity
+const directions = [0,1,2,3];
+let currentCoords = [rand(8,1,{round:true}),rand(8,1,{round:true})];
+let possibleCoords = [0,0];
+
+track[currentCoords[1]][currentCoords[0]] = 11;
 
 for (let i = 0; i < 5; i++) {
+    do{
+        const direction = 0;
+        possibleCoords = currentCoords.slice();
+        if (possibleCoords[0] == 0) {
+            direction = rand(3,2,{round:true});
+        } else if (possibleCoords[0] == 9) {
+            direction = rand(3,2,{round:true});
+        } else if (possibleCoords[1] == 0) {
+            direction = rand(1,0,{round:true});
+        } else if (possibleCoords[1] == 9) {
+            direction = rand(1,0,{round:true});
+        } else {
+            direction = rand(3,0,{round:true});
+        }
 
-    if (i == 0) {
-        genCoords = [rand(3,1,{round:true}),rand(3,1,{round:true})];
-        track[genCoords[1]][genCoords[0]] = i + 1;
-        checkpoints[0] = [genCoords[1],genCoords[0]];
-        pointer = [genCoords[1],genCoords[0]];
-    } else {
-        do {
-            genCoords = [rand(8,1,{round:true}),rand(8,1,{round:true})];
-        } while (track[genCoords[1]][genCoords[0]] !== 0);
-        track[genCoords[1]][genCoords[0]] = i + 1;
-        checkpoints.push([genCoords[1],genCoords[0]]); // Push the pair of coordinates as an array
-    };
+        switch (direction) {
+            case 0:
+                possibleCoords[1] = currentCoords[1] - 1;
+                break;
+            case 1:
+                possibleCoords[0] = currentCoords[0] + 1;
+                break;
+            case 2:
+                possibleCoords[1] = currentCoords[1] + 1;
+                break;
+            case 3:
+                possibleCoords[0] = currentCoords[0] - 1;
+                break;
+        };
+    } while (track[possibleCoords[1]][possibleCoords[0]] !== 0);
+
+    track[possibleCoords[1]][possibleCoords[0]] = 1;
+    currentCoords = possibleCoords.slice();
+
+    console.log(currentCoords);
 };
-
-for (let i = 1; i < checkpoints.length; i++) {
-    const checkpoint = checkpoints[i];
-    const distance = Math.sqrt(Math.pow(pointer[1] - checkpoint[1], 2) + Math.pow(pointer[0] - checkpoint[0], 2));
-
-    if (distance < closestDistance) {
-        closestCheckpoint = [checkpoint[1], checkpoint[0]]; // Swapped order
-        closestDistance = distance;
-    }
-}
-
-
-console.log("Closest checkpoint:", closestCheckpoint);
 
 console.table(track);
 
