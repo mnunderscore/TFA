@@ -1,48 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
-        <link rel="stylesheet" href="styles/app.css" type="text/css">
-	</head>
-	<body class="page">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/app.css" type="text/css" />
+    <script src="scripts/app.js" type="text/javascript" defer></script>
+  </head>
+  <body class="page">
+    <div class="page__container">
+      <div class="right-column">
+        <div class="navbar">
+          <p class="navbar__title">Navigation</p>
+          <ul class="navbar__list">
+            <li class="navbar__item navbar__item--active">
+              <a href="#top">Home</a>
+            </li>
+            <li class="navbar__item"><a href="#what">Pourquoi?</a></li>
+            <li class="navbar__item"><a href="#hardware">Matériel</a></li>
+            <li class="navbar__item"><a href="#software">Logiciel</a></li>
+            <li class="navbar__item"><a href="#pilot">PDV Pilote</a></li>
+            <li class="navbar__item">
+              <a href="#commentary">PDV Streaming</a>
+            </li>
+            <li class="navbar__item">
+              <a href="#builder">Track Builder</a>
+            </li>
+          </ul>
+          <div class="credits">
+            <p class="credits__text">
+              Made with ❤️ by <a
+                class="credits__link"
+                href="https://mnunderscore.github.io/"
+                target="_blank"
+                >mnunderscore</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
 
-		<div class="page__container">
-			<div class="right-column">
-				<div class="navbar">
-					<p class="navbar__title">Navigation</p>
-					<ul class="navbar__list">
-						<li><a class="navbar__item navbar__item--active" href="index.html">Home</a></li>
-						<li><a class="navbar__item" href="index.html">Pourquoi?</a></li>
-						<li><a class="navbar__item" href="index.html">Matériel</a></li>
-						<li><a class="navbar__item" href="index.html">Logiciel</a></li>
-						<li><a class="navbar__item" href="trackbuilder.html">Track Builder</a></li>
-					</ul>
-				</div>
-				<div class="credits">
-					<p class="credits__text">Made with ❤️ by <a class="credits__link" href="https://mnunderscore.github.io/" target="_blank">mnunderscore</a></p>
-				</div>
+      <div class="left-column">
+        <div class="page__title" id="top">
+          <h1 class="title">Simracing</h1>
+          <h2 class="subtitle">The best simracing website</h2>
+        </div>
+
+        <div class="content">
+          <div class="content__block" id="what">
+            <h3 class="content__title">What is simracing?</h3>
+            <p class="content__text">
+              Le simracing, contraction de simulation et racing (course
+              en anglais), est une discipline virtuelle qui reproduit fidèlement
+              l’expérience de la course automobile. À l’aide de simulateurs
+              de conduite, les passionnés de sport automobile peuvent s’immerger
+              dans des courses virtuelles, que ce soit pour le plaisir,
+              l’entraînement ou la compétition.
+            </p>
+            <p>
+              Les simulateurs de conduite varient en complexité, allant des
+              configurations basiques avec un volant et des pédales à des setups
+              sophistiqués comprenant des cockpits réglables, des écrans
+              panoramiques ou même des casques de réalité virtuelle. Cette
+              diversité permet à chacun de créer un environnement de conduite
+              adapté à ses besoins et à son budget.
+            </p>
+            <p>
+              Le simracing offre une multitude de possibilités, que ce soit pour
+              s’affronter en ligne avec d’autres joueurs, participer à des
+              championnats virtuels, ou simplement s’entraîner sur des circuits
+              du monde entier. Grâce aux avancées technologiques, les
+              simulateurs de conduite offrent une expérience immersive
+              et réaliste, reproduisant fidèlement les sensations de vitesse,
+              de gravité et de contrôle d’une voiture de course.
+            </p>
+            <p>
+              Que ce soit pour vivre des sensations fortes, améliorer ses
+              compétences de conduite ou simplement s’amuser entre amis,
+              le simracing est une activité passionnante qui ne cesse de gagner
+              en popularité dans le monde entier.
+            </p>
+          </div>
+
+          <div class="content__block" id="hardware">
+            <h3 class="content__title">Matériel</h3>
+
+            <p>
+              Le simracing nécessite un équipement spécifique pour reproduire
+              fidèlement l’expérience de la conduite automobile. Voici les
+              principaux éléments constitutifs d’un setup de simracing:
+            </p>
+            <dl>
+              <dt>Volant:</dt>
+              <dd>
+                Le volant est l’interface principale entre le joueur
+                et le simulateur. Il existe une variété de volants disponibles,
+                allant des modèles de base aux volants haut de gamme avec retour
+                de force et force feedback.
+              </dd>
+
+              <dt>Pédales:</dt>
+              <dd>
+                Les pédales reproduisent l’accélérateur, le frein et l’embrayage
+                d’une voiture réelle. Ils sont essentiels pour contrôler
+                la vitesse et le comportement du véhicule dans le jeu.
+              </dd>
+
+              <dt>Cockpit:</dt>
+              <dd>
+                Le cockpit, ou siège de simulation, offre un environnement
+                de conduite réaliste en intégrant le volant, les pédales
+                et parfois le levier de vitesse dans une structure stable
+                et réglable.
+              </dd>
+
+              <dt>Écrans ou casque de réalité virtuelle:</dt>
+              <dd>
+                Les écrans ou les casques de réalité virtuelle fournissent
+                la vue du conducteur pendant la course. Les écrans panoramiques
+                ou les casques VR offrent une immersion supplémentaire
+                en reproduisant un champ de vision réaliste.
+              </dd>
+
+              <dt>Accessoires:</dt>
+              <dd>
+                D’autres accessoires comme les leviers de vitesses, les freins
+                à main, les supports pour écrans et les systèmes de vibration
+                peuvent améliorer l’expérience de jeu en ajoutant des sensations
+                tactiles et visuelles.
+              </dd>
+            </dl>
+            <p>
+              L’équipement de simracing peut varier en fonction des préférences
+              personnelles et du budget de chaque joueur. Il est important
+              de choisir des composants de qualité pour garantir une expérience
+              de jeu optimale.
+            </p>
+          </div>
+
+          <div class="content__block" id="software">
+            <h3 class="content__title">Logiciel</h3>
+          </div>
+
+          <div class="content__block" id="pilot">
+            <h3 class="content__title">POV Pilote</h3>
+          </div>
+
+          <div class="content__block" id="commentary">
+            <h3 class="content__title">POV Commentateur</h3>
+          </div>
+
+		  <div class="content__block" id="builder">
+            <h3 class="content__title">Track Builder</h3>
+			<p>Type de circuit:
+				<select name="type" id="track-type">
+					<option value="Circuit">Circuit</option>
+					<option value="Sprint">Sprint</option>
+				</select>
+			</p>
+			<p>Taille du circuit:
+				<select name="size" id="track-size">
+					<option value="small">Petit</option>
+					<option value="mid">Moyen</option>
+					<option value="large">Grand</option>
+				</select>
+			</p>
+			<p>Rotation du circuit:
+				<select name="rotation" id="track-rotation">
+					<option value="0">0°</option>
+					<option value="45">45°</option>
+				</select>
+			</p>
+			<div class="block__centered">
+
 			</div>
+          </div>
+        </div>
+      </div>
 
-			<div class="left-column">
-				<div class="page__title">
-					<h1 class="title">Simracing</h1>
-					<h2 class="subtitle">The best simracing website</h2>
-				</div>
-
-				<div class="content">
-					<div class="content__block">
-						<h3 class="content__title">What is simracing?</h3>
-						<p class="content__text">
-							Simracing is the act of driving a simulated vehicle in a virtual environment. It is a popular hobby among car enthusiasts and racing fans.
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="corner__styling"></div>
-
-		</div>
-    </body>
+      <div class="corner__styling"></div>
+    </div>
+  </body>
 </html>

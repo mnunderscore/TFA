@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap');
 
 html {
-    font-size: 30px;
+    font-size: 25px;
     font-family: "Jost", sans-serif;
     color: #FEFEFE;
     font-weight: 400;
@@ -9,26 +9,16 @@ html {
 
 .title {
     font-family: "Syne", sans-serif;
-    font-size: 2.986rem;
+    font-size: 3.583rem;
     font-weight: 800;
     margin:0;
+    margin-left: 12px;
     color: #95FF00;
     transition: font-weight 0.2s cubic-bezier(0.45, 0, 0.55, 1);
+    position: relative; /* Add this line */
+    overflow: visible;
 
-    &::before {
-        content: "";
-        display: inline-block;
-        width: 2rem;
-        height: 2rem;
-        background-image: url("/assets/star.svg");
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center;
-        position:fixed;
-        top:100px;
-        left:30px;
-    }
-
+    &::before,
     &::after {
         content: "";
         display: inline-block;
@@ -38,29 +28,39 @@ html {
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
-        position:fixed;
-        top:73px;
-        left:740px;
+        position: absolute; /* Change this line */
+        z-index: 1; /* Add this line */
+    }
+
+    &::before {
+        top: 37px;
+        left: -25px;
+    }
+
+    &::after {
+        top: 16px;
+        left: 685px;
     }
 }
 
 .subtitle {
     font-family: "Syne", sans-serif;
-    font-size: 2.488rem;
+    font-size: 2.986rem;
     font-weight: 600;
     margin:0;
 }
 
 .content__title{
     font-size: 1.44rem;
-    font-weight: 600;
+    font-weight: 400;
+    color: #FEFEFE;
+    transition: color 0.5s cubic-bezier(0.45, 0, 0.55, 1), font-weight 0.5s cubic-bezier(0.45, 0, 0.55, 1);
 }
 
 .navbar__title{
+    text-align: right;
     font-family: "Syne", sans-serif;
     text-transform: uppercase;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
     font-size: 1.2rem;
     font-weight: 700;
     margin:0;
@@ -75,19 +75,21 @@ html {
 }
 
 .navbar__item {
-    font-family: "Syne", sans-serif;
-    font-size: 1.44rem;
-    font-weight: 600;
-    margin:0;
-    color: #FEFEFE;
-    transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
+    a{
+        font-family: "Syne", sans-serif;
+        font-size: 1.44rem;
+        font-weight: 600;
+        margin:0;
+        color: #FEFEFE;
+        transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
+    }
 
-    &.navbar__item--active {
+    &.navbar__item--active a{
         color: #95FF00;
         font-weight: 600;
     }
 
-    &:hover {
+    &:hover a{
         color: #95FF00;
         font-weight: 800;
         transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
