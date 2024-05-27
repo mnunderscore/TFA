@@ -29,6 +29,7 @@
     "sass-loader": "^12.4.0"
   },
   "dependencies": {
+    "@types/node": "^20.12.12",
     "jquery": "^3.7.1"
   }
 }
