@@ -91,34 +91,34 @@ document.addEventListener("DOMContentLoaded", function() {
         function findPath(track, start, end) {
             const queue = [[start, []]];
             const visited = new Set();
-        
+
             while (queue.length > 0) {
                 const [checkpoint, path] = queue.shift();
-        
+
                 if (arraysEqual(checkpoint, end)) {
                     return path.concat([end]);
                 }
-        
+
                 visited.add(checkpoint.toString());
-        
+
                 const neighbors = [
                     [checkpoint[0] - 1, checkpoint[1]],
                     [checkpoint[0] + 1, checkpoint[1]],
                     [checkpoint[0], checkpoint[1] - 1],
                     [checkpoint[0], checkpoint[1] + 1]
                 ];
-        
+
                 for (const neighbor of neighbors) {
                     const [i, j] = neighbor;
-        
+
                     if (i >= 0 && i < track.length && j >= 0 && j < track[0].length &&
                         !visited.has(neighbor.toString()) &&
-                        (track[i][j] === 0 || track[i][j] === 98 || track[i][j] === 99 || arraysEqual(neighbor, end))) {
+                        (track[i][j] === 0 || track[i][j] === 99 || arraysEqual(neighbor, end))) {
                         queue.push([neighbor, path.concat([checkpoint])]);
                     }
                 }
             }
-        
+
             return null;
         }
 
@@ -156,21 +156,21 @@ document.addEventListener("DOMContentLoaded", function() {
         function findPaths(track, closestCheckpointPath) {
             let paths = [];
             let step = 1;
-        
+
             for (let i = 0; i < closestCheckpointPath.length - 1; i++) {
                 let start = closestCheckpointPath[i];
                 let end = closestCheckpointPath[i + 1];
                 let path = findPath(track, start, end);
-        
+
                 if (path) {
                     paths.push(path);
                     for (let j = 0; j < path.length; j++) {
                         let prev = path[j - 1];
                         let curr = path[j];
                         let next = path[j + 1];
-        
+
                         let [x, y] = curr;
-                        if (track[x][y] === 0 || track[x][y] === 99 || track[x][y] === 98) {
+                        if (track[x][y] === 0) {
                             if (prev && next && prev[0] === curr[0] && curr[0] === next[0]) {
                                 // Aligned vertically
                                 track[x][y] = 2;
@@ -178,26 +178,26 @@ document.addEventListener("DOMContentLoaded", function() {
                                 // Aligned horizontally
                                 track[x][y] = 1;
                             } else {
-                                // It's a corner or a checkpoint
+                                // It's a corner
                                 track[x][y] = 3;
                             }
                         }
                     }
                 }
             }
-        
+
             return paths;
         }
 
         function placeStart(track, paths) {
             let potentialCells = [];
-        
+
             paths.forEach(path => {
                 for (let i = 1; i < path.length - 1; i++) {
                     let prev = path[i - 1];
                     let curr = path[i];
                     let next = path[i + 1];
-        
+
                     if (prev[0] === curr[0] && curr[0] === next[0]) { // Aligned vertically
                         potentialCells.push({ cell: curr, alignment: 'vertical' });
                     } else if (prev[1] === curr[1] && curr[1] === next[1]) { // Aligned horizontally
@@ -205,10 +205,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 }
             });
-        
+
             if (potentialCells.length > 0) {
                 let randomCell = getRandomElement(potentialCells);
-                track[randomCell.cell[0]][randomCell.cell[1]] = randomCell.alignment === 'vertical' ? 98 : 97;
+                track[randomCell.cell[0]][randomCell.cell[1]] = randomCell.alignment === 'vertical' ? 97 : 96;
             }
         }
 
@@ -263,10 +263,14 @@ document.addEventListener("DOMContentLoaded", function() {
                         return "/assets/images/horizontal.svg";
                     case 3: // Corner
                         return "/assets/images/corner.svg";
-                    case 97:
+                    case 96:
                         return "/assets/images/vertical-start.svg";
-                    case 98:
+                    case 97:
                         return "/assets/images/horizontal-start.svg";
+                    case 98:
+                        return "red";
+                    case 99:
+                        return "green";
                     default:
                         return "rgba(255, 255, 255, 0.0)";
                 }
