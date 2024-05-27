@@ -2,13 +2,8 @@
 <svg id="Layer_4" data-name="Layer 4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
   <defs>
     <style>
-      .cls-1 {
-        font-family: MyriadPro-Regular, 'Myriad Pro';
-        font-size: 60px;
-      }
-
       .cls-2 {
-        fill: #231f20;
+        fill: #95FF00;
         stroke-width: 0px;
       }
 
@@ -23,5 +18,4 @@
   </defs>
   <rect class="cls-2" y="250" width="800" height="300"/>
   <rect class="cls-2" x="375" y="175" width="50" height="450"/>
-  <text class="cls-1" transform="translate(464.28 218.82)"><tspan class="cls-4" x="0" y="0">S</tspan><tspan x="29.4" y="0">ta</tspan><tspan class="cls-3" x="78.18" y="0">r</tspan><tspan x="99.24" y="0">t</tspan></text>
 </svg>

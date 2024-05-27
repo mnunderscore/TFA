@@ -1,3 +1,5 @@
+// TODO: add directions to checkpoints
+
 const rand = ( max = 1, min = 0, { round = false } = {} ) => {
     let n = Math.random() * ( max - min ) + min;
     if( round ){
@@ -22,6 +24,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const regenerateTrackButton = document.getElementById('regenerate-track');
 
     function recalculate() {
+
+        console.clear();
 
         var trackSizeOption = trackSizeSelect.options[trackSizeSelect.selectedIndex].value;
         var numCheckpointsOption = numCheckpointsSelect.options[numCheckpointsSelect.selectedIndex].value;
@@ -87,34 +91,34 @@ document.addEventListener("DOMContentLoaded", function() {
         function findPath(track, start, end) {
             const queue = [[start, []]];
             const visited = new Set();
-
+        
             while (queue.length > 0) {
                 const [checkpoint, path] = queue.shift();
-
+        
                 if (arraysEqual(checkpoint, end)) {
                     return path.concat([end]);
                 }
-
+        
                 visited.add(checkpoint.toString());
-
+        
                 const neighbors = [
                     [checkpoint[0] - 1, checkpoint[1]],
                     [checkpoint[0] + 1, checkpoint[1]],
                     [checkpoint[0], checkpoint[1] - 1],
                     [checkpoint[0], checkpoint[1] + 1]
                 ];
-
+        
                 for (const neighbor of neighbors) {
                     const [i, j] = neighbor;
-
+        
                     if (i >= 0 && i < track.length && j >= 0 && j < track[0].length &&
                         !visited.has(neighbor.toString()) &&
-                        (track[i][j] === 0 || arraysEqual(neighbor, end))) {
+                        (track[i][j] === 0 || track[i][j] === 98 || track[i][j] === 99 || arraysEqual(neighbor, end))) {
                         queue.push([neighbor, path.concat([checkpoint])]);
                     }
                 }
             }
-
+        
             return null;
         }
 
@@ -152,29 +156,65 @@ document.addEventListener("DOMContentLoaded", function() {
         function findPaths(track, closestCheckpointPath) {
             let paths = [];
             let step = 1;
-
+        
             for (let i = 0; i < closestCheckpointPath.length - 1; i++) {
                 let start = closestCheckpointPath[i];
                 let end = closestCheckpointPath[i + 1];
                 let path = findPath(track, start, end);
-
+        
                 if (path) {
                     paths.push(path);
                     for (let j = 0; j < path.length; j++) {
-                        let [x, y] = path[j];
-                        if (track[x][y] === 0) {
-                            track[x][y] = step++;
+                        let prev = path[j - 1];
+                        let curr = path[j];
+                        let next = path[j + 1];
+        
+                        let [x, y] = curr;
+                        if (track[x][y] === 0 || track[x][y] === 99 || track[x][y] === 98) {
+                            if (prev && next && prev[0] === curr[0] && curr[0] === next[0]) {
+                                // Aligned vertically
+                                track[x][y] = 2;
+                            } else if (prev && next && prev[1] === curr[1] && curr[1] === next[1]) {
+                                // Aligned horizontally
+                                track[x][y] = 1;
+                            } else {
+                                // It's a corner or a checkpoint
+                                track[x][y] = 3;
+                            }
                         }
                     }
                 }
             }
-
+        
             return paths;
         }
 
+        function placeStart(track, paths) {
+            let potentialCells = [];
+        
+            paths.forEach(path => {
+                for (let i = 1; i < path.length - 1; i++) {
+                    let prev = path[i - 1];
+                    let curr = path[i];
+                    let next = path[i + 1];
+        
+                    if (prev[0] === curr[0] && curr[0] === next[0]) { // Aligned vertically
+                        potentialCells.push({ cell: curr, alignment: 'vertical' });
+                    } else if (prev[1] === curr[1] && curr[1] === next[1]) { // Aligned horizontally
+                        potentialCells.push({ cell: curr, alignment: 'horizontal' });
+                    }
+                }
+            });
+        
+            if (potentialCells.length > 0) {
+                let randomCell = getRandomElement(potentialCells);
+                track[randomCell.cell[0]][randomCell.cell[1]] = randomCell.alignment === 'vertical' ? 98 : 97;
+            }
+        }
+
         let closestCheckpointPath = calculateClosestCheckpoint();
-        console.log("Closest checkpoint path:", closestCheckpointPath);
-        findPaths(track, closestCheckpointPath);
+        let paths = findPaths(track, closestCheckpointPath);
+        placeStart(track, paths);
 
         console.table(track);
 
@@ -217,17 +257,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
             const trackMatrix = track.map(row => row.map(cell => {
                 switch (cell) {
-                    case 0:
-                        return "white";
+                    case 1: // Vertical path
+                        return "/assets/images/vertical.svg";
+                    case 2: // Horizontal path
+                        return "/assets/images/horizontal.svg";
+                    case 3: // Corner
+                        return "/assets/images/corner.svg";
+                    case 97:
+                        return "/assets/images/vertical-start.svg";
                     case 98:
-                        return "red";
-                    case 99:
-                        return "blue";
+                        return "/assets/images/horizontal-start.svg";
                     default:
-                        if (cell >= 1 && cell < 98) {
-                            return "black";
-                        }
-                        return "white";
+                        return "rgba(255, 255, 255, 0.0)";
                 }
             }));
 
@@ -235,8 +276,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
             for (let i = 0; i < cols; i++) {
                 for (let j = 0; j < cols; j++) {
-                    ctx.fillStyle = trackMatrix[i][j];
-                    ctx.fillRect(j * squareSize, i * squareSize, squareSize, squareSize);
+                    let fillStyle = trackMatrix[i][j];
+                    if (fillStyle.startsWith("/")) {
+                        let img = new Image();
+                        img.onload = function() {
+                            ctx.drawImage(img, j * squareSize, i * squareSize, squareSize, squareSize);
+                        };
+                        img.src = fillStyle;
+                        ctx.drawImage(img, j * squareSize, i * squareSize, squareSize, squareSize);
+                    } else {
+                        ctx.fillStyle = fillStyle;
+                        ctx.fillRect(j * squareSize, i * squareSize, squareSize, squareSize);
+                    }
                 }
             }
         };
