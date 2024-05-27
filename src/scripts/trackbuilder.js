@@ -13,11 +13,13 @@ const getRandomElement = ( array ) => {
 
 var trackSize = 0
 var numCheckpoints = 0;
+var canvas = null; // Added variable to store the canvas element
 
 document.addEventListener("DOMContentLoaded", function() {
 
     var trackSizeSelect = document.getElementById('track-size');
     var numCheckpointsSelect = document.getElementById('checkpoint-number');
+    const regenerateTrackButton = document.getElementById('regenerate-track');
 
     function recalculate() {
 
@@ -26,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (trackSizeOption === 'small') {
             trackSize = 8;
-        } else if (trackSizeOption === 'medium') {
+        } else if (trackSizeOption === 'mid') {
             trackSize = 10;
         } else if (trackSizeOption === 'large') {
             trackSize = 12;
@@ -44,9 +46,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
         let genCoords = [0,0]
         let checkpoints = [[0,0]]
-        let pointer = [0,0]
-        let closestCheckpoint = checkpoints[0];
-        let closestDistance = Infinity;
 
         do {
             genCoords = [rand(trackSize-1,1,{round:true}),rand(trackSize-1,1,{round:true})];
@@ -59,16 +58,13 @@ document.addEventListener("DOMContentLoaded", function() {
             let path;
             do {
                 genCoords = [rand(trackSize-2,1,{round:true}),rand(trackSize-2,1,{round:true})];
-                // Check if the generated coordinates are the same as any existing checkpoint
                 while (track[genCoords[1]][genCoords[0]] !== 0) {
-                    // If they are the same, generate new coordinates
                     genCoords = [rand(trackSize-2,1,{round:true}),rand(trackSize-2,1,{round:true})];
                 }
                 track[genCoords[1]][genCoords[0]] = 99;
                 checkpoints.push([genCoords[1],genCoords[0]]);
                 path = findPath(JSON.parse(JSON.stringify(track)), checkpoints[0], genCoords);
                 if (!path) {
-                    // If there's no path from the first checkpoint to the new one, remove it and try again
                     track[genCoords[1]][genCoords[0]] = 0;
                     checkpoints.pop();
                 }
@@ -182,16 +178,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
         console.table(track);
 
-
         const body = document.querySelector( '.block__centered' ),
             w = window.innerWidth,
             h = window.innerHeight,
             dpr = window.devicePixelRatio;
 
-        const canvas = document.createElement( 'canvas' ),
-            ctx = canvas.getContext( '2d' ),
-            realWidth = Math.round( w * 0.25 ),
-            realHeight = realWidth;
+        // Remove existing canvas if it exists
+        if (canvas) {
+            body.removeChild(canvas);
+        }
+
+        canvas = document.createElement( 'canvas' );
+        const ctx = canvas.getContext( '2d' );
+        const realWidth = Math.round( w * 0.25 );
+        const realHeight = realWidth;
 
         const canvasSetup = () => {
             canvas.width = realWidth * dpr;
@@ -247,6 +247,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     recalculate();
 
+    regenerateTrackButton.addEventListener('click', recalculate);
     trackSizeSelect.addEventListener('change', recalculate);
     numCheckpointsSelect.addEventListener('change', recalculate);
 });
