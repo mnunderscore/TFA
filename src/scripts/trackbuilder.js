@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return a.length === b.length && a.every((val, index) => val === b[index]);
         }
 
-        function findPath(track, start, end) {
+        function findPath(track, start, end, endPoints = new Set()) {
             const queue = [[start, []]];
             const visited = new Set();
 
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     if (i >= 0 && i < track.length && j >= 0 && j < track[0].length &&
                         !visited.has(neighbor.toString()) &&
-                        (track[i][j] === 0 || track[i][j] === 99 || arraysEqual(neighbor, end))) {
+                        (track[i][j] === 0 || (track[i][j] === 99 && endPoints.has(neighbor.toString())) || arraysEqual(neighbor, end))) {
                         queue.push([neighbor, path.concat([checkpoint])]);
                     }
                 }
@@ -128,6 +128,8 @@ document.addEventListener("DOMContentLoaded", function() {
             let currentCheckpoint = checkpointsCopy[0];
             let firstCheckpoint = currentCheckpoint;
             path.push(currentCheckpoint);
+
+            let endPoints = new Set(checkpointsCopy.map(checkpoint => checkpoint.toString()));
 
             while (checkpointsCopy.length > 1) {
                 let closestDistance = Infinity;
@@ -146,6 +148,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 currentCheckpoint = checkpointsCopy[closestCheckpointIndex];
                 path.push(currentCheckpoint);
                 checkpointsCopy.splice(closestCheckpointIndex, 1);
+                endPoints.delete(currentCheckpoint.toString());
             }
 
             path.push(firstCheckpoint);
@@ -154,8 +157,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         function findPaths(track, closestCheckpointPath) {
-            let paths = [];
-            let step = 1;
+            let paths = [];0
 
             for (let i = 0; i < closestCheckpointPath.length - 1; i++) {
                 let start = closestCheckpointPath[i];
