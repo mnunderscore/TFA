@@ -158,19 +158,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
         function findPaths(track, closestCheckpointPath) {
             let paths = [];
-        
+
             for (let i = 0; i < closestCheckpointPath.length - 1; i++) {
                 let start = closestCheckpointPath[i];
                 let end = closestCheckpointPath[i + 1];
                 let path = findPath(track, start, end);
-        
+
                 if (path) {
                     paths.push(path);
                     for (let j = 0; j < path.length; j++) {
                         let prev = path[j - 1];
                         let curr = path[j];
                         let next = path[j + 1];
-        
+
                         let [x, y] = curr;
                         if (track[x][y] === 0) { // Check if the cell is either a path or a checkpoint
                             if (prev && next && prev[0] === curr[0] && curr[0] === next[0]) {
@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 }
             }
-        
+
             return paths;
         }
 
