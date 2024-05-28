@@ -1,4 +1,5 @@
 // TODO: add directions to checkpoints
+// TODO: set correct rotation to corners
 
 const rand = ( max = 1, min = 0, { round = false } = {} ) => {
     let n = Math.random() * ( max - min ) + min;
