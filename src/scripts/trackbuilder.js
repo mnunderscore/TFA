@@ -1,4 +1,4 @@
-// TODO: replace checkpoints with normal track values
+//TODO: translate checkpoints as part of track
 
 const rand = ( max = 1, min = 0, { round = false } = {} ) => {
     let n = Math.random() * ( max - min ) + min;
@@ -15,7 +15,7 @@ const getRandomElement = ( array ) => {
 
 var trackSize = 0
 var numCheckpoints = 0;
-var canvas = null; // Added variable to store the canvas element
+var canvas = null;
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 let path = findPath(track, start, end);
 
                 if (path) {
-                    console.log('Path:', path); // Log the generated path
+                    console.log('Path:', path);
 
                     paths.push(path);
                     for (let j = 1; j < path.length - 1; j++) {
@@ -174,15 +174,15 @@ document.addEventListener("DOMContentLoaded", function() {
                         let next = path[j + 1];
 
                         let [x, y] = curr;
-                        if (track[x][y] === 0) { // Check if the cell is either a path or a checkpoint
+                        if (track[x][y] === 0 ) {
                             if (prev[0] === curr[0] && curr[0] === next[0]) {
-                                // Aligned vertically
+
                                 track[x][y] = 2;
                             } else if (prev[1] === curr[1] && curr[1] === next[1]) {
-                                // Aligned horizontally
+
                                 track[x][y] = 1;
                             } else {
-                                // It's a corner
+
                                 if ((prev[0] < curr[0] && curr[1] < next[1]) || (prev[1] > curr[1] && curr[0] > next[0])) {
                                     track[x][y] = 6;
                                 } else if ((prev[1] > curr[1] && curr[0] < next[0]) || (prev[0] > curr[0] && curr[1] < next[1])) {
@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                 } else if ((prev[1] < curr[1] && curr[0] < next[0]) || (prev[0] > curr[0] && curr[1] > next[1])) {
                                     track[x][y] = 4;
                                 } else {
-                                    console.error('Invalid corner', {prev, curr, next}); // Log the points when the corner detection fails
+                                    console.error('Invalid corner', {prev, curr, next});
                                 }
                             }
                         }
@@ -212,9 +212,9 @@ document.addEventListener("DOMContentLoaded", function() {
                     let curr = path[i];
                     let next = path[i + 1];
 
-                    if (prev[0] === curr[0] && curr[0] === next[0]) { // Aligned vertically
+                    if (prev[0] === curr[0] && curr[0] === next[0]) {
                         potentialCells.push({ cell: curr, alignment: 'vertical' });
-                    } else if (prev[1] === curr[1] && curr[1] === next[1]) { // Aligned horizontally
+                    } else if (prev[1] === curr[1] && curr[1] === next[1]) {
                         potentialCells.push({ cell: curr, alignment: 'horizontal' });
                     }
                 }
@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function() {
             h = window.innerHeight,
             dpr = window.devicePixelRatio;
 
-        // Remove existing canvas if it exists
+
         if (canvas) {
             body.removeChild(canvas);
         }
@@ -270,17 +270,17 @@ document.addEventListener("DOMContentLoaded", function() {
         const draw = () => {
             const trackMatrix = track.map(row => row.map(cell => {
                 switch (cell) {
-                    case 1: // Vertical path
+                    case 1:
                         return {src: "/assets/images/straight.svg", rotation: 0};
-                    case 2: // Horizontal path
+                    case 2:
                         return {src: "/assets/images/straight.svg", rotation: Math.PI/2};
-                    case 3: // bottom-to-right corner
+                    case 3:
                         return {src: "/assets/images/corner.svg", rotation: 0};
-                    case 4: // bottom-to-left corner
+                    case 4:
                         return {src: "/assets/images/corner.svg", rotation: Math.PI/2};
-                    case 5: // top-to-left corner
+                    case 5:
                         return {src: "/assets/images/corner.svg", rotation: Math.PI};
-                    case 6: // top-to-right corner
+                    case 6:
                         return {src: "/assets/images/corner.svg", rotation: 3*Math.PI/2};
                     case 96:
                         return {src: "/assets/images/start.svg", rotation: 0};
