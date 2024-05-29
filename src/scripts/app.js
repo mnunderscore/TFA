@@ -2,8 +2,6 @@
 import $ from 'jquery';
 import track from 'trackbuilder.js';
 
-//TODO: make the nav highlight the current section
-
 function changeColorIfVisible() {
     const leftColumn = $('.left-column');
     const topOfViewport = leftColumn.scrollTop();
