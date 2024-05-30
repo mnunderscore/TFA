@@ -157,21 +157,29 @@
           <section class="content__block" id="builder">
             <h3 class="content__title">Track Builder</h3>
             <p>
-              Taille du circuit:
-              <select name="size" id="track-size">
+              Bienvenue dans le Track Builder!
+            </p>
+            <p>
+              Ceci est petit projet fun créé de toute pièce afin de générer des circuits classiques ou sprints de manière aléatoire.
+            </p>
+            <dl>
+              <dt>Taille du circuit:</dt>
+              <dd>La taille de circuit correspond à la taille de la grille interne. Un grand circuit apparaîtra moins zoomé, mais la piste sera plus grande.</dd>
+              <dd><select name="size" id="track-size">
                 <option value="small">Petit</option>
                 <option value="mid">Moyen</option>
                 <option value="large">Grand</option>
-              </select>
-            </p>
-            <p>
-              Nombre de checkpoints:
-              <select name="checkpoints" id="checkpoint-number">
+              </select></dd>
+            </dl>
+            <dl>
+              <dt>Nombre de checkpoints:</dt>
+              <dd>Le nombre de checkpoints correspond à la valeur de « randomisation » du circuit. Un plus grand nombre de checkpoints signifie un circuit plus complexe, plus aléatoire.</dd>
+              <dd><select name="checkpoints" id="checkpoint-number">
                 <option value="4">4</option>
                 <option value="6">6</option>
                 <option value="8">8</option>
-              </select>
-            </p>
+              </select></dd>
+            </dl>
             <button id="regenerate-track">Regénérer circuit</button>
             <div class="block__centered"></div>
           </section>

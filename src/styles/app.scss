@@ -57,7 +57,11 @@ body {
             width: 70%;
 
             canvas{
-                outline-offset: 16px;
+                margin-top: 15px;
+                margin-bottom:15px;
+                outline:#95FF00 solid 3px;
+                border-radius: 50px;
+                outline-offset: 5px;
                 transform: rotate(90deg);
             }
 
@@ -72,10 +76,12 @@ body {
                 display: flex;
                 flex-direction: column;
 
-                &__block .block__centered{
-                    display:flex;
-                    justify-content: center;
-                    align-items: center;
+                &__block{
+                    .block__centered{
+                        display:flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
                 }
             }
 
