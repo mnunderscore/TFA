@@ -1,4 +1,4 @@
-//TODO: translate checkpoints as part of track
+'use strict';
 
 const rand = ( max = 1, min = 0, { round = false } = {} ) => {
     let n = Math.random() * ( max - min ) + min;
@@ -30,59 +30,47 @@ document.addEventListener("DOMContentLoaded", function() {
         var trackSizeOption = trackSizeSelect.options[trackSizeSelect.selectedIndex].value;
         var numCheckpointsOption = numCheckpointsSelect.options[numCheckpointsSelect.selectedIndex].value;
 
-        if (trackSizeOption === 'small') {
-            trackSize = 8;
-        } else if (trackSizeOption === 'mid') {
-            trackSize = 10;
-        } else if (trackSizeOption === 'large') {
-            trackSize = 12;
-        }
+        trackSize = trackSizeOption === 'small' ? 8 : trackSizeOption === 'mid' ? 10 : 12;
 
-        if (numCheckpointsOption === '4') {
-            numCheckpoints = 4;
-        } else if (numCheckpointsOption === '6') {
-            numCheckpoints = 6;
-        } else if (numCheckpointsOption === '8') {
-            numCheckpoints = 8;
-        }
+        numCheckpoints = parseInt(numCheckpointsOption);
 
         const track = Array.from({ length: trackSize }, () => Array(trackSize).fill(0));
 
         let genCoords = [0,0]
-        let checkpoints = [[0,0]]
+        let checkpoints = []
 
-        do {
-            genCoords = [rand(trackSize-1,1,{round:true}),rand(trackSize-1,1,{round:true})];
-            track[genCoords[1]][genCoords[0]] = 98;
-            checkpoints[0] = [genCoords[1],genCoords[0]];
-            pointer = [genCoords[1],genCoords[0]];
-        } while (!findPath(JSON.parse(JSON.stringify(track)), checkpoints[0], genCoords));
+        function genCheckpoints() {
+            const directions = [
+                [0, 1], [1, 0], [0, -1], [-1, 0]
+            ];
 
-        for (let i = 1; i < numCheckpoints; i++) {
-            let path;
-            do {
-                genCoords = [rand(trackSize-2,1,{round:true}),rand(trackSize-2,1,{round:true})];
-                while (track[genCoords[1]][genCoords[0]] !== 0) {
-                    genCoords = [rand(trackSize-2,1,{round:true}),rand(trackSize-2,1,{round:true})];
+            for (let i = 0; i < numCheckpoints + 1; i++) {
+                let validCoord = false;
+
+                while (!validCoord) {
+                    genCoords = [rand(trackSize - 2, 1, { round: true }), rand(trackSize - 2, 1, { round: true })];
+
+                    if (track[genCoords[1]][genCoords[0]] === 0) {
+                        validCoord = true;
+
+                        for (let [dx, dy] of directions) {
+                            let nx = genCoords[0] + dx;
+                            let ny = genCoords[1] + dy;
+
+                            if (nx >= 0 && nx < trackSize && ny >= 0 && ny < trackSize && track[ny][nx] === 99) {
+                                validCoord = false;
+                                break;
+                            }
+                        }
+                    }
                 }
+
                 track[genCoords[1]][genCoords[0]] = 99;
-                checkpoints.push([genCoords[1],genCoords[0]]);
-                path = findPath(JSON.parse(JSON.stringify(track)), checkpoints[0], genCoords);
-                if (!path) {
-                    track[genCoords[1]][genCoords[0]] = 0;
-                    checkpoints.pop();
-                }
-            } while (!path);
-        };
-
-        let path = findPath(JSON.parse(JSON.stringify(track)), checkpoints[checkpoints.length - 1], checkpoints[0]);
-        if (!path) {
-            console.log("The track cannot loop back to the first checkpoint.");
-        } else {
-            console.log("The track can loop back to the first checkpoint.");
+                checkpoints.push([genCoords[1], genCoords[0]]);
+            }
         }
 
-        console.log("Checkpoints:", checkpoints);
+        genCheckpoints();
 
         function arraysEqual(a, b) {
             return a.length === b.length && a.every((val, index) => val === b[index]);
@@ -165,7 +153,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 let path = findPath(track, start, end);
 
                 if (path) {
-                    console.log('Path:', path);
 
                     paths.push(path);
                     for (let j = 1; j < path.length - 1; j++) {
@@ -191,8 +178,6 @@ document.addEventListener("DOMContentLoaded", function() {
                                     track[x][y] = 5;
                                 } else if ((prev[1] < curr[1] && curr[0] < next[0]) || (prev[0] > curr[0] && curr[1] > next[1])) {
                                     track[x][y] = 4;
-                                } else {
-                                    console.error('Invalid corner', {prev, curr, next});
                                 }
                             }
                         }
@@ -204,6 +189,15 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         function placeStart(track, paths) {
+            // Check if track contains 10, 11, 12, or 13
+            for (let row of track) {
+                for (let cell of row) {
+                    if ([10, 11, 12, 13].includes(cell)) {
+                        return; // Exit the function if any of these values are found
+                    }
+                }
+            }
+
             let potentialCells = [];
 
             paths.forEach(path => {
@@ -226,11 +220,69 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
 
+        function replaceCheckpoints(track, checkpoints) {
+            checkpoints.forEach(checkpoint => {
+                let currentX = checkpoint[0];
+                let currentY = checkpoint[1];
+
+                let up = currentX > 0 ? track[currentX - 1][currentY] : 0;
+                let down = currentX < track.length - 1 ? track[currentX + 1][currentY] : 0;
+                let left = currentY > 0 ? track[currentX][currentY - 1] : 0;
+                let right = currentY < track[0].length - 1 ? track[currentX][currentY + 1] : 0;
+
+                if(left == 2 && right == 2 || left == 97 && right == 2 || left == 2 && right == 97) {
+                    track[currentX][currentY] = 2;
+                } else if (up == 1 && down == 1 || up == 96 && down == 1 || up == 1 && down == 96) {
+                    track[currentX][currentY] = 1;
+                } else if (left == 2 || left == 3 || left == 6 || left == 97) {
+                    if (down == 1 || down == 5 || down == 6 || down == 96){
+                    track[currentX][currentY] = 4;
+                    } else if (up == 1 || up == 3 || up == 4 || up == 96) {
+                    track[currentX][currentY] = 5;
+                    } else if (right == 2 || right == 4 || right == 5 || right == 97){
+                    track[currentX][currentY] = 2;
+                    } else if (right == 1 || right == 3 || right == 6 || right == 96 || right == 0 || up == 2 || up == 5 || up == 6 || up == 97 || up == 0 || down == 2 || down == 4 || down == 3 || down == 97 || down == 0) {
+                        track[currentX][currentY] = 11;
+                    }
+                } else if (right == 2 || right == 4 || right == 5 || right == 97) {
+                    if (down == 1 || down == 5 || down == 6 || down == 96){
+                    track[currentX][currentY] = 3;
+                    } else if (up == 1 || up == 3 || up == 4 || up == 96) {
+                    track[currentX][currentY] = 6;
+                    } else if (left == 2 || left == 3 || left == 6 || left == 97) {
+                    track[currentX][currentY] = 2;
+                    } else if (left == 1 || left == 4 || left == 5 || left == 96 || left == 0 || up == 2 || up == 5 || up == 6 || up == 97 || up == 0 || down == 2 || down == 4 || down == 3 || down == 97 || down == 0) {
+                        track[currentX][currentY] = 13;
+                    }
+                } else if (down == 1 || down == 5 || down == 6 || down == 96){
+                    if (right == 2 || right == 4 || right == 5 || right == 97){
+                    track[currentX][currentY] = 3;
+                    } else if (left == 2 || left == 3 || left == 6 || left == 97) {
+                    track[currentX][currentY] = 4;
+                    } else if (up == 1 || up == 3 || up == 4 || up == 96) {
+                    track[currentX][currentY] = 1;
+                    } else if (left == 1 || left == 4 || left == 5 || left == 96 || left == 0 || right == 1 || right == 3 || right == 6 || right == 96 || right == 0 || up == 2 || up == 5 || up == 6 || up == 97 || up == 0) {
+                        track[currentX][currentY] = 10;
+                    }
+                } else if (up == 1 || up == 3 || up == 4 || up == 96) {
+                    if (right == 2 || right == 4 || right == 5 || right == 97){
+                    track[currentX][currentY] = 6;
+                    } else if (left == 2 || left == 3 || left == 6 || left == 97) {
+                    track[currentX][currentY] = 5;
+                    } else if (down == 1 || down == 5 || down == 6 || down == 96){
+                    track[currentX][currentY] = 1;
+                    } else if (left == 1 || left == 4 || left == 5 || left == 96 || left == 0 || right == 1 || right == 3 || right == 6 || right == 96 || right == 0 || down == 2 || down == 4 || down == 3 || down == 97 || down == 0) {
+                        track[currentX][currentY] = 12;
+                    }
+                }
+            });
+        }
+
         let closestCheckpointPath = calculateClosestCheckpoint();
         let paths = findPaths(track, closestCheckpointPath);
-        placeStart(track, paths);
 
-        console.table(track);
+        replaceCheckpoints(track, closestCheckpointPath);
+        placeStart(track, paths);
 
         const body = document.querySelector( '.block__centered' ),
             w = window.innerWidth,
@@ -282,14 +334,18 @@ document.addEventListener("DOMContentLoaded", function() {
                         return {src: "/assets/images/corner.svg", rotation: Math.PI};
                     case 6:
                         return {src: "/assets/images/corner.svg", rotation: 3*Math.PI/2};
+                    case 10:
+                        return {src: "/assets/images/sprint.svg", rotation: 0};
+                    case 11:
+                        return {src: "/assets/images/sprint.svg", rotation: Math.PI/2};
+                    case 12:
+                        return {src: "/assets/images/sprint.svg", rotation: Math.PI};
+                    case 13:
+                        return {src: "/assets/images/sprint.svg", rotation: 3*Math.PI/2};
                     case 96:
                         return {src: "/assets/images/start.svg", rotation: 0};
                     case 97:
                         return {src: "/assets/images/start.svg", rotation: Math.PI/2};
-                    case 98:
-                        return "red";
-                    case 99:
-                        return "green";
                     default:
                         return "rgba(255, 255, 255, 0.0)";
                 }

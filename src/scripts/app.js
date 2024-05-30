@@ -1,6 +1,6 @@
 'use strict'
 import $ from 'jquery';
-import track from 'trackbuilder.js';
+import 'trackbuilder.js';
 
 function changeColorIfVisible() {
     const leftColumn = $('.left-column');
