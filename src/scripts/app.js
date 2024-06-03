@@ -93,7 +93,7 @@ timeline.fromTo(".animation .title",{
     top: "35%",
     duration: 1,
     ease: "power1.out",
-    delay: 2
+    delay: 1
 },">");
 timeline.fromTo(".animation .subtitle",{
     opacity:0,
@@ -113,22 +113,24 @@ timeline.fromTo(".animation .subtitle",{
 },">");
 timeline.to(".animation .title",{
     opacity: 0,
-    height:0,
     duration: 0.5,
-    delay: 3,
+    delay: 2,
     ease: "power1.out",
 },">");
 timeline.to(".animation .subtitle",{
     opacity: 0,
-    height:0,
     duration: 0.5,
     ease: "power1.out",
 },"<");
 timeline.to(".animation .title",{
     visibility: "hidden",
+    height:0,
+    duration:0,
 },">");
 timeline.to(".animation .subtitle",{
     visibility: "hidden",
+    height:0,
+    duration:0,
 },"<");
 timeline.from(".page__container",{
     opacity: 0,
