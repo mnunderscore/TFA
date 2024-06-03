@@ -45,8 +45,6 @@
           <h1 class="title">Simracing</h1>
           <h2 class="subtitle">The best simracing website</h2>
         </div>
-
-        <!-- TODO: rework content -->
         <div class="content">
           <section class="content__block" id="what">
             <h3 class="content__title">What is simracing?</h3>
@@ -141,14 +139,94 @@
 
           <section class="content__block" id="software">
             <h3 class="content__title">Logiciel</h3>
+            <p>
+              Il y existe plusieurs jeux propre au simracing, chacun ayant une
+              physique différente; mais encore une disponibilité de véhicules
+              et de circuits variée.
+            </p>
+            <p>Les jeux de simracing les plus populaires incluent:</p>
+            <dl>
+              <dt>La série Assetto Corsa</dt>
+              <dd>
+                Assetto Corsa est un simulateur de conduite réaliste qui offre
+                une variété de véhicules et de circuits à explorer. Ce jeu se
+                démarque par son support pour les « mods »; des fichiers ajoutés
+                au jeu afin d’améliorer l’expérience de jeu.
+              </dd>
+              <dd>
+                Assetto Corsa Competizione, est quand à lui une version
+                totalement différente du jeu, se concentrant sur le championnat
+                GT World Challenge, un championnat composé exclusivement de
+                voitures de type GT2, GT3 et GT4 (avec quelques autres
+                catégories moins importantes) et de circuits officiels de la
+                série.
+              </dd>
+              <dt>iRacing</dt>
+              <dd>
+                iRacing est un simulateur de course en ligne sur PC qui s’est
+                démarqué par son système de license et son sérieux. En effet,
+                iRacing donne un certain « ranking » avec des points attribués
+                (ou retirés) en fonction de la performance du joueur. Ce système
+                permet donc de classer les joueurs en fonction de leur niveau de
+                compétence. Ce simulateur était à l’origine axé pour le Nascar,
+                mais s’est diversifié dans les alentours de 2017 pour proposer
+                des courses de Formule 1, de GT3, de rallycross, etc.
+              </dd>
+
+              <dt>Gran Turismo 7</dt>
+              <dd>
+                Gran Turismo 7 est un jeu de course automobile disponible sur
+                PS4 et PS5. Ce jeu offre une grande variété de véhicules et de
+                circuits (fictifs et réels) ainsi qu’un mode carrière complet et
+                un multijoueur exemplaire.
+              </dd>
+            </dl>
           </section>
 
           <section class="content__block" id="pilot">
-            <h3 class="content__title">POV Pilote</h3>
+            <h3 class="content__title">PDV Pilote</h3>
+            <p>
+              Dans ma « carrière » simracing, j’ai eu l’occasion de conduire sur
+              plusieurs simulateurs; mais aussi de participer à des championnats
+              et même parfois les organiser. C’est souvent la même chose:
+              s’entraîner avec une certaine voiture sur un certain circuit, pour
+              finalement se retrouver en course avec des adversaires. Ce que
+              j’apprécie le plus, c’est la compétition mais aussi le côté
+              technique de la chose. Par exemple, dans des endurances, il faut
+              gérer la consommation d’essence, les pneus, les arrêts aux stands,
+              etc.
+            </p>
+            <p>
+              Vous voulez voir un exemple? Voici une vidéo de moi en course:
+            </p>
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/1J1J1J1J1J1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
           </section>
 
           <section class="content__block" id="commentary">
-            <h3 class="content__title">POV Commentateur</h3>
+            <h3 class="content__title">PDV Streaming</h3>
+            <p>
+              J’ai aussi réalisé du commentary; c’est à dire commenter des
+              courses en direct. Je produis-donc des les directs diffusés sur
+              Youtube, et commente par dessus avec un ami.
+            </p>
+            <p>Vous voulez un aperçu? Le voici:</p>
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/1J1J1J1J1J1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
           </section>
 
           <!-- TODO: style dropdowns -->
@@ -156,29 +234,41 @@
 
           <section class="content__block" id="builder">
             <h3 class="content__title">Track Builder</h3>
+            <p>Bienvenue dans le Track Builder!</p>
             <p>
-              Bienvenue dans le Track Builder!
-            </p>
-            <p>
-              Ceci est petit projet fun créé de toute pièce afin de générer des circuits classiques ou sprints de manière aléatoire.
+              Ceci est petit projet fun créé de toute pièce afin de générer des
+              circuits classiques ou sprints de manière aléatoire.
             </p>
             <dl>
-              <dt>Taille du circuit:</dt>
-              <dd>La taille de circuit correspond à la taille de la grille interne. Un grand circuit apparaîtra moins zoomé, mais la piste sera plus grande.</dd>
-              <dd><select name="size" id="track-size">
-                <option value="small">Petit</option>
-                <option value="mid">Moyen</option>
-                <option value="large">Grand</option>
-              </select></dd>
+              <dt>Taille du circuit:</dt>
+              <dd>
+                La taille de circuit correspond à la taille de la grille
+                interne. Un grand circuit apparaîtra moins zoomé, mais la piste
+                sera plus grande.
+              </dd>
+              <dd>
+                <select name="size" id="track-size">
+                  <option value="small">Petit</option>
+                  <option value="mid">Moyen</option>
+                  <option value="large">Grand</option>
+                </select>
+              </dd>
             </dl>
             <dl>
               <dt>Nombre de checkpoints:</dt>
-              <dd>Le nombre de checkpoints correspond à la valeur de « randomisation » du circuit. Un plus grand nombre de checkpoints signifie un circuit plus complexe, plus aléatoire.</dd>
-              <dd><select name="checkpoints" id="checkpoint-number">
-                <option value="4">4</option>
-                <option value="6">6</option>
-                <option value="8">8</option>
-              </select></dd>
+              <dd>
+                Le nombre de checkpoints correspond à la valeur
+                de « randomisation » du circuit. Un plus grand nombre
+                de checkpoints signifie un circuit plus complexe, plus
+                aléatoire.
+              </dd>
+              <dd>
+                <select name="checkpoints" id="checkpoint-number">
+                  <option value="4">4</option>
+                  <option value="6">6</option>
+                  <option value="8">8</option>
+                </select>
+              </dd>
             </dl>
             <button id="regenerate-track">Regénérer circuit</button>
             <div class="block__centered"></div>

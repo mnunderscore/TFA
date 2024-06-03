@@ -77,6 +77,47 @@ body {
                 flex-direction: column;
 
                 &__block{
+                    &#builder{
+                        #checkpoint-number, #track-size{
+                            appearance: none;
+                            -webkit-appearance: none;
+                            margin: 0;
+                            padding: 8px 40px 8px 15px;
+                            border: #95FF00 solid 3px;
+                            border-radius: 50px;
+                            outline: none;
+                            color: #95FF00;
+                            font-family: "Jost", sans-serif;
+                            font-size: 0.694rem;
+                            background-image:
+                                linear-gradient(45deg, transparent 50%, #95FF00 50%),
+                                linear-gradient(135deg, #95FF00 50%, transparent 50%),
+                                linear-gradient(to right, #95FF00, #95FF00);
+                            background-position:
+                                calc(100% - 13px) calc(1em + 2px),
+                                calc(100% - 8px) calc(1em + 2px),
+                                calc(100% - 1.5em) 0.5em;
+                            background-size:
+                                5px 5px,
+                                5px 5px,
+                                1px 1.5em;
+                            background-repeat: no-repeat;
+                            background-color: transparent;
+                        }
+
+                        #regenerate-track{
+                            margin: 0;
+                            padding: 10px;
+                            background: none;
+                            border: #95FF00 solid 3px;
+                            border-radius: 50px;
+                            outline: none;
+                            cursor: pointer;
+                            color: #95FF00;
+                            font-family: "Jost", sans-serif;
+                            font-size: 0.694rem;
+                        }
+                    }
                     .block__centered{
                         display:flex;
                         justify-content: center;
@@ -100,7 +141,7 @@ body {
             margin: 0;
             padding: 0;
             width: 25%;
-            border-left: 1px solid #95FF00;
+            border-left: 3px solid #95FF00;
             z-index: 1;
 
             .navbar{
