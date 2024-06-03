@@ -43,11 +43,22 @@ html {
     }
 }
 
+.animation .title{
+    text-shadow: -1px 0 #404040, 0 1px #404040, 1px 0 #404040, 0 -1px #404040;
+}
+
 .subtitle {
     font-family: "Syne", sans-serif;
     font-size: 2.986rem;
     font-weight: 600;
     margin:0;
+
+}
+
+.animation .subtitle{
+    text-align: center;
+    width:80%;
+    color:#404040;
 }
 
 .content__title{
