@@ -91,18 +91,26 @@ body {
                             font-size: 0.694rem;
                             background-image:
                                 linear-gradient(45deg, transparent 50%, #95FF00 50%),
-                                linear-gradient(135deg, #95FF00 50%, transparent 50%),
-                                linear-gradient(to right, #95FF00, #95FF00);
+                                linear-gradient(135deg, #95FF00 50%, transparent 50%);
                             background-position:
                                 calc(100% - 13px) calc(1em + 2px),
-                                calc(100% - 8px) calc(1em + 2px),
-                                calc(100% - 1.5em) 0.5em;
+                                calc(100% - 8px) calc(1em + 2px);
                             background-size:
                                 5px 5px,
                                 5px 5px,
                                 1px 1.5em;
                             background-repeat: no-repeat;
                             background-color: transparent;
+                            transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
+
+                            &:hover, &:focus{
+                                background-image:
+                                    linear-gradient(45deg, transparent 50%, #404040 50%),
+                                    linear-gradient(135deg, #404040 50%, transparent 50%);
+                                transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
+                                color: #404040;
+                                background-color: #95FF00;
+                            }
                         }
 
                         #regenerate-track{
@@ -116,6 +124,13 @@ body {
                             color: #95FF00;
                             font-family: "Jost", sans-serif;
                             font-size: 0.694rem;
+                            transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
+
+                            &:hover, &:focus{
+                                background: #95FF00;
+                                color: #404040;
+                                transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
+                            }
                         }
                     }
                     .block__centered{
@@ -130,7 +145,8 @@ body {
                 font-weight: 600;
             }
             dd {
-                margin-bottom: 25px;
+                margin-top:10px;
+                margin-bottom: 50px;
             }
         }
 

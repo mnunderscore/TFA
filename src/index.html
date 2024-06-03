@@ -16,7 +16,7 @@
             <li class="navbar__item">
               <a href="#top">Home</a>
             </li>
-            <li class="navbar__item"><a href="#what">Pourquoi?</a></li>
+            <li class="navbar__item"><a href="#what">Quoi?</a></li>
             <li class="navbar__item"><a href="#hardware">Matériel</a></li>
             <li class="navbar__item"><a href="#software">Logiciel</a></li>
             <li class="navbar__item"><a href="#pilot">PDV Pilote</a></li>
@@ -43,11 +43,11 @@
       <div class="left-column">
         <div class="page__title" id="top">
           <h1 class="title">Simracing</h1>
-          <h2 class="subtitle">The best simracing website</h2>
+          <h2 class="subtitle">& pourquoi c'est ma passion</h2>
         </div>
         <div class="content">
           <section class="content__block" id="what">
-            <h3 class="content__title">What is simracing?</h3>
+            <h3 class="content__title">Qu'est-ce que le simracing?</h3>
             <p class="content__text">
               Le simracing, contraction de simulation et racing (course
               en anglais), est une discipline virtuelle qui reproduit fidèlement
@@ -230,7 +230,6 @@
           </section>
 
           <!-- TODO: style dropdowns -->
-          <!-- TODO: style buttons -->
 
           <section class="content__block" id="builder">
             <h3 class="content__title">Track Builder</h3>
@@ -240,34 +239,32 @@
               circuits classiques ou sprints de manière aléatoire.
             </p>
             <dl>
-              <dt>Taille du circuit:</dt>
-              <dd>
-                La taille de circuit correspond à la taille de la grille
-                interne. Un grand circuit apparaîtra moins zoomé, mais la piste
-                sera plus grande.
-              </dd>
-              <dd>
+              <dt>Taille du circuit:
                 <select name="size" id="track-size">
                   <option value="small">Petit</option>
                   <option value="mid">Moyen</option>
                   <option value="large">Grand</option>
                 </select>
+              </dt>
+              <dd>
+                La taille de circuit correspond à la taille de la grille
+                interne. Un grand circuit apparaîtra moins zoomé, mais la piste
+                sera plus grande.
               </dd>
             </dl>
             <dl>
-              <dt>Nombre de checkpoints:</dt>
-              <dd>
-                Le nombre de checkpoints correspond à la valeur
-                de « randomisation » du circuit. Un plus grand nombre
-                de checkpoints signifie un circuit plus complexe, plus
-                aléatoire.
-              </dd>
-              <dd>
+              <dt>Nombre de checkpoints:
                 <select name="checkpoints" id="checkpoint-number">
                   <option value="4">4</option>
                   <option value="6">6</option>
                   <option value="8">8</option>
                 </select>
+              </dt>
+              <dd>
+                Le nombre de checkpoints correspond à la valeur
+                de « randomisation » du circuit. Un plus grand nombre
+                de checkpoints signifie un circuit plus complexe, plus
+                aléatoire.
               </dd>
             </dl>
             <button id="regenerate-track">Regénérer circuit</button>
