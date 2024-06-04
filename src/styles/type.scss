@@ -1,7 +1,25 @@
+@use 'node_modules/utopia-core-scss/src/utopia' as utopia;
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap');
 
+
+/* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1200,25,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+:root {
+    @include utopia.generateTypeScale((
+      "minWidth": 320,
+      "maxWidth": 1240,
+      "minFontSize": 18,
+      "maxFontSize": 25,
+      "minTypeScale": 1.125,
+      "maxTypeScale": 1.2,
+      "positiveSteps": 5,
+      "negativeSteps": 2,
+      "prefix": "step-",
+    ));
+  }
+
 html {
-    font-size: 25px;
+    font-size: var(--step-0);
     font-family: "Jost", sans-serif;
     color: #FEFEFE;
     font-weight: 400;
@@ -9,14 +27,17 @@ html {
 
 .title {
     font-family: "Syne", sans-serif;
-    font-size: 3.583rem;
+    font-size: var(--step-5);
     font-weight: 800;
     margin:0;
-    margin-left: 12px;
     color: #95FF00;
     transition: font-weight 0.2s cubic-bezier(0.45, 0, 0.55, 1);
     position: relative; /* Add this line */
     overflow: visible;
+}
+
+.animation .title{
+    text-shadow: -1px 0 #404040, 0 1px #404040, 1px 0 #404040, 0 -1px #404040;
 
     &::before,
     &::after {
@@ -43,13 +64,9 @@ html {
     }
 }
 
-.animation .title{
-    text-shadow: -1px 0 #404040, 0 1px #404040, 1px 0 #404040, 0 -1px #404040;
-}
-
 .subtitle {
     font-family: "Syne", sans-serif;
-    font-size: 2.986rem;
+    font-size: var(--step-4);
     font-weight: 600;
     margin:0;
 
@@ -62,17 +79,16 @@ html {
 }
 
 .content__title{
-    font-size: 1.44rem;
+    font-size: var(--step-1);
     font-weight: 400;
     color: #FEFEFE;
     transition: color 0.5s cubic-bezier(0.45, 0, 0.55, 1), font-weight 0.5s cubic-bezier(0.45, 0, 0.55, 1);
 }
 
 .navbar__title{
-    text-align: right;
     font-family: "Syne", sans-serif;
     text-transform: uppercase;
-    font-size: 1.2rem;
+    font-size: var(--step-0);
     font-weight: 700;
     margin:0;
     color: #95FF00;
@@ -88,21 +104,39 @@ html {
 .navbar__item {
     a{
         font-family: "Syne", sans-serif;
-        font-size: 1.44rem;
+        font-size: var(--step-0);
         font-weight: 600;
         margin:0;
         color: #FEFEFE;
         transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
+        &:hover, &:focus{
+            color: #95FF00;
+            font-weight: 800;
+            transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
+        }
     }
 
     &.navbar__item--active a{
         color: #95FF00;
         font-weight: 600;
-    }
 
-    &:hover a{
-        color: #95FF00;
-        font-weight: 800;
-        transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
+        &:hover, &:focus{
+            font-weight: 800;
+        }
     }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 1024px) {
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+}
+
+@media only screen and (min-width: 1200px) {
 }

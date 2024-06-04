@@ -411,8 +411,8 @@ document.addEventListener("DOMContentLoaded", function () {
       canvas.width = realWidth * dpr;
       canvas.height = realHeight * dpr;
 
-      canvas.style.width = `${realWidth}px`;
-      canvas.style.height = `${realHeight}px`;
+      // canvas.style.width = `${realWidth}px`;
+      // canvas.style.height = `${realHeight}px`;
 
       canvas.style.transform = "rotate(0deg)";
       canvas.style.webkitTransform = "rotate(0deg)";
