@@ -68,6 +68,29 @@ function highlightCurrentSection() {
     }
 }
 
+//when user clicks on pop-up title, open the navigation menu
+$('.navbar__title').click(function() {
+    $('.navbar').toggleClass('navbar--open');
+    $('.page__container').toggleClass('page__container--open');
+});
+
+$('.navbar__link').click(function() {
+    $('.navbar').removeClass('navbar--open');
+    $('.page__container').removeClass('page__container--open');
+});
+
+$(document).bind("hashchange", function(){
+    var hash = location.hash.replace('#','');
+
+    if(hash != ''){
+        // Show the hash if it's set
+        alert(hash);
+
+        // Clear the hash in the URL
+        location.hash = '';
+    }
+});
+
 
 // var timeline = gsap.timeline();
 

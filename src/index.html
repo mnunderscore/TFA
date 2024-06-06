@@ -18,17 +18,25 @@
           <p class="navbar__title">Navigation</p>
           <ul class="navbar__list">
             <li class="navbar__item">
-              <a href="#top">Home</a>
-            </li>
-            <li class="navbar__item"><a href="#what">Quoi?</a></li>
-            <li class="navbar__item"><a href="#hardware">Matériel</a></li>
-            <li class="navbar__item"><a href="#software">Logiciel</a></li>
-            <li class="navbar__item"><a href="#pilot">PDV Pilote</a></li>
-            <li class="navbar__item">
-              <a href="#commentary">PDV Streaming</a>
+              <a class="navbar__link" href="#top">Home</a>
             </li>
             <li class="navbar__item">
-              <a href="#builder">Track Builder</a>
+              <a class="navbar__link" href="#what">Quoi?</a>
+            </li>
+            <li class="navbar__item">
+              <a class="navbar__link" href="#hardware">Matériel</a>
+            </li>
+            <li class="navbar__item">
+              <a class="navbar__link" href="#software">Logiciel</a>
+            </li>
+            <li class="navbar__item">
+              <a class="navbar__link" href="#pilot">PDV Pilote</a>
+            </li>
+            <li class="navbar__item">
+              <a class="navbar__link" href="#commentary">PDV Streaming</a>
+            </li>
+            <li class="navbar__item">
+              <a class="navbar__link" href="#builder">Track Builder</a>
             </li>
           </ul>
           <div class="credits">
@@ -47,11 +55,11 @@
       <div class="left-column">
         <div class="page__title" id="top">
           <h1 class="title">Simracing</h1>
-          <h2 class="subtitle">& pourquoi c'est ma passion</h2>
+          <h2 class="subtitle">& pourquoi c’est ma passion</h2>
         </div>
         <div class="content">
           <section class="content__block" id="what">
-            <h3 class="content__title">Qu'est-ce que le simracing?</h3>
+            <h3 class="content__title">Qu’est-ce que le simracing?</h3>
             <p class="content__text">
               Le simracing, contraction de simulation et racing (course
               en anglais), est une discipline virtuelle qui reproduit fidèlement
@@ -72,16 +80,7 @@
               Le simracing offre une multitude de possibilités, que ce soit pour
               s’affronter en ligne avec d’autres joueurs, participer à des
               championnats virtuels, ou simplement s’entraîner sur des circuits
-              du monde entier. Grâce aux avancées technologiques, les
-              simulateurs de conduite offrent une expérience immersive
-              et réaliste, reproduisant fidèlement les sensations de vitesse,
-              de gravité et de contrôle d’une voiture de course.
-            </p>
-            <p>
-              Que ce soit pour vivre des sensations fortes, améliorer ses
-              compétences de conduite ou simplement s’amuser entre amis,
-              le simracing est une activité passionnante qui ne cesse de gagner
-              en popularité dans le monde entier.
+              du monde entier.
             </p>
           </section>
 
@@ -170,7 +169,7 @@
                 iRacing est un simulateur de course en ligne sur PC qui s’est
                 démarqué par son système de license et son sérieux. En effet,
                 iRacing donne un certain « ranking » avec des points attribués
-                (ou retirés) en fonction de la performance du joueur. Ce système
+                (ou retirés) en fonction de la performance du joueur. Ce système
                 permet donc de classer les joueurs en fonction de leur niveau de
                 compétence. Ce simulateur était à l’origine axé pour le Nascar,
                 mais s’est diversifié dans les alentours de 2017 pour proposer
@@ -201,17 +200,18 @@
               etc.
             </p>
             <p>
-              Vous voulez voir un exemple? Voici une vidéo de moi en course:
+              Vous voulez voir un exemple? Voici une vidéo de moi en course:
             </p>
-            <iframe
+            <!-- <iframe
               width="560"
               height="315"
               src="https://www.youtube.com/embed/1J1J1J1J1J1"
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
-            </iframe>
+              allowfullscreen
+            >
+            </iframe> -->
           </section>
 
           <section class="content__block" id="commentary">
@@ -221,16 +221,17 @@
               courses en direct. Je produis-donc des les directs diffusés sur
               Youtube, et commente par dessus avec un ami.
             </p>
-            <p>Vous voulez un aperçu? Le voici:</p>
-            <iframe
+            <p>Vous voulez un aperçu? Le voici:</p>
+            <!-- <iframe
               width="560"
               height="315"
               src="https://www.youtube.com/embed/1J1J1J1J1J1"
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
-            </iframe>
+              allowfullscreen
+            >
+            </iframe> -->
           </section>
 
           <!-- TODO: style dropdowns -->
@@ -243,7 +244,8 @@
               circuits classiques ou sprints de manière aléatoire.
             </p>
             <dl>
-              <dt>Taille du circuit:
+              <dt>
+                Taille du circuit:
                 <select name="size" id="track-size">
                   <option value="small">Petit</option>
                   <option value="mid">Moyen</option>
@@ -257,7 +259,8 @@
               </dd>
             </dl>
             <dl>
-              <dt>Nombre de checkpoints:
+              <dt>
+                Nombre de checkpoints:
                 <select name="checkpoints" id="checkpoint-number">
                   <option value="4">4</option>
                   <option value="6">6</option>
@@ -284,17 +287,25 @@
         <p class="navbar__title">Navigation</p>
         <ul class="navbar__list">
           <li class="navbar__item">
-            <a href="#top">Home</a>
-          </li>
-          <li class="navbar__item"><a href="#what">Quoi?</a></li>
-          <li class="navbar__item"><a href="#hardware">Matériel</a></li>
-          <li class="navbar__item"><a href="#software">Logiciel</a></li>
-          <li class="navbar__item"><a href="#pilot">PDV Pilote</a></li>
-          <li class="navbar__item">
-            <a href="#commentary">PDV Streaming</a>
+            <a class="navbar__link" href="#top">Home</a>
           </li>
           <li class="navbar__item">
-            <a href="#builder">Track Builder</a>
+            <a class="navbar__link" href="#what">Quoi?</a>
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="#hardware">Matériel</a>
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="#software">Logiciel</a>
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="#pilot">PDV Pilote</a>
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="#commentary">PDV Streaming</a>
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="#builder">Track Builder</a>
           </li>
         </ul>
         <div class="credits">
