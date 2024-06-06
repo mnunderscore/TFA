@@ -1,11 +1,11 @@
-@use 'node_modules/utopia-core-scss/src/utopia' as utopia;
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap');
-
+@use "node_modules/utopia-core-scss/src/utopia" as utopia;
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap");
 
 /* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1200,25,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 
 :root {
-    @include utopia.generateTypeScale((
+  @include utopia.generateTypeScale(
+    (
       "minWidth": 320,
       "maxWidth": 1240,
       "minFontSize": 18,
@@ -15,186 +15,182 @@
       "positiveSteps": 5,
       "negativeSteps": 4,
       "prefix": "step-",
-    ));
-  }
+    )
+  );
+}
 
 html {
-    font-size: var(--step-0);
-    font-family: "Jost", sans-serif;
-    color: #FEFEFE;
-    font-weight: 400;
+  font-size: var(--step-0);
+  font-family: "Jost", sans-serif;
+  color: #fefefe;
+  font-weight: 400;
 }
 
 .title {
-    font-family: "Syne", sans-serif;
-    font-size: var(--step-5);
-    font-weight: 800;
-    margin:0;
-    color: #95FF00;
-    transition: font-weight 0.2s cubic-bezier(0.45, 0, 0.55, 1);
-    position: relative; /* Add this line */
-    overflow: visible;
+  font-family: "Syne", sans-serif;
+  font-size: var(--step-5);
+  font-weight: 800;
+  margin: 0;
+  color: #95ff00;
+  transition: font-weight 0.2s cubic-bezier(0.45, 0, 0.55, 1);
+  position: relative; /* Add this line */
+  overflow: visible;
 }
 
-.animation .title{
-    text-shadow: -1px 0 #404040, 0 1px #404040, 1px 0 #404040, 0 -1px #404040;
-
-    &::before,
-    &::after {
-        content: "";
-        display: inline-block;
-        width: 2rem;
-        height: 2rem;
-        background-image: url("/assets/star.svg");
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center;
-        position: absolute; /* Change this line */
-        z-index: 1; /* Add this line */
-    }
-
-    &::before {
-        top: 37px;
-        left: -25px;
-    }
-
-    &::after {
-        top: 16px;
-        left: 685px;
-    }
+.animation .title {
+  opacity: 0;
+  text-shadow: -1px 0 #404040, 0 1px #404040, 1px 0 #404040, 0 -1px #404040;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .subtitle {
+  font-family: "Syne", sans-serif;
+  font-size: var(--step-4);
+  font-weight: 600;
+  margin: 0;
+}
+
+.animation .subtitle {
+  text-align: center;
+  width: 80%;
+  color: #404040;
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.content__title {
+  font-size: var(--step-1);
+  font-weight: 400;
+  color: #fefefe;
+  transition: color 0.5s cubic-bezier(0.45, 0, 0.55, 1),
+    font-weight 0.5s cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+.page__container {
+  .navbar__title {
     font-family: "Syne", sans-serif;
-    font-size: var(--step-4);
-    font-weight: 600;
-    margin:0;
+    text-transform: uppercase;
+    font-size: var(--step--1);
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin: 0;
+    color: #95ff00;
+  }
 
+  .credits {
+    font-size: var(--step--3);
+    font-weight: 500;
+    margin: 0;
+    color: #fefefe;
+  }
+
+  .navbar__item {
+    .navbar__link {
+      font-family: "Syne", sans-serif;
+      font-size: var(--step--1);
+      font-weight: 600;
+      margin: 0;
+      color: #fefefe;
+      transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
+      &:hover,
+      &:focus {
+        color: #95ff00;
+        font-weight: 800;
+        transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
+      }
+    }
+
+    &.navbar__item--active .navbar__link {
+      color: #95ff00;
+      font-weight: 600;
+
+      &:hover,
+      &:focus {
+        font-weight: 800;
+      }
+    }
+  }
 }
 
-.animation .subtitle{
-    text-align: center;
-    width:80%;
-    color:#404040;
-}
+.pop-up__nav {
+  opacity: 0;
+  .navbar {
+    .navbar__title {
+      font-family: "Syne", sans-serif;
+      text-transform: uppercase;
+      font-size: var(--step-1);
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: 8px;
+      text-align: center;
+      color: #fefefe;
+      text-shadow: -2px 0 #404040, 0 2px #404040, 2px 0 #404040, 0 -2px #404040;
 
-.content__title{
-    font-size: var(--step-1);
-    font-weight: 400;
-    color: #FEFEFE;
-    transition: color 0.5s cubic-bezier(0.45, 0, 0.55, 1), font-weight 0.5s cubic-bezier(0.45, 0, 0.55, 1);
-}
-
-.page__container{
-    .navbar__title{
-        font-family: "Syne", sans-serif;
-        text-transform: uppercase;
-        font-size: var(--step--1);
-        font-weight: 700;
-        letter-spacing: 4px;
-        margin:0;
-        color: #95FF00;
+      &:hover,
+      &:focus {
+        color: #95ff00;
+      }
     }
 
     .credits {
-        font-size: var(--step--3);
-        font-weight: 500;
-        margin:0;
-        color: #FEFEFE;
+      font-size: var(--step-1);
+      font-weight: 500;
+      margin: 0;
+      color: #404040;
     }
 
     .navbar__item {
-        .navbar__link{
-            font-family: "Syne", sans-serif;
-            font-size: var(--step--1);
-            font-weight: 600;
-            margin:0;
-            color: #FEFEFE;
-            transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
-            &:hover, &:focus{
-                color: #95FF00;
-                font-weight: 800;
-                transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
-            }
+      .navbar__link {
+        font-family: "Syne", sans-serif;
+        font-size: var(--step-1);
+        font-weight: 600;
+        margin: 0;
+        color: #404040;
+        text-shadow: none;
+        transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
+        &:hover,
+        &:focus {
+          color: #95ff00;
+          font-weight: 800;
+          text-shadow: -1px 0 #404040, 0 1px #404040, 1px 0 #404040,
+            0 -1px #404040;
+          transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
         }
+      }
 
-        &.navbar__item--active .navbar__link{
-            color: #95FF00;
-            font-weight: 600;
+      &.navbar__item--active .navbar__link {
+        text-shadow: -1px 0 #404040, 0 1px #404040, 1px 0 #404040,
+          0 -1px #404040;
+        color: #95ff00;
+        font-weight: 600;
 
-            &:hover, &:focus{
-                font-weight: 800;
-            }
+        &:hover,
+        &:focus {
+          font-weight: 800;
         }
+      }
     }
-}
 
-.pop-up__nav{
-    .navbar{
-        .navbar__title{
-            font-family: "Syne", sans-serif;
-            text-transform: uppercase;
-            font-size: var(--step-1);
-            font-weight: 700;
-            margin:0;
-            letter-spacing: 8px;
-            text-align: center;
-            color: #FEFEFE;
-            text-shadow: -2px 0 #404040, 0 2px #404040, 2px 0 #404040, 0 -2px #404040;
-
-            &:hover, &:focus{
-                color:#95FF00;
-            }
-        }
-
-        .credits {
-            font-size: var(--step-1);
-            font-weight: 500;
-            margin:0;
-            color: #404040;
-        }
-
-        .navbar__item {
-            .navbar__link{
-                font-family: "Syne", sans-serif;
-                font-size: var(--step-1);
-                font-weight: 600;
-                margin:0;
-                color: #404040;
-                text-shadow: none;
-                transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
-                &:hover, &:focus{
-                    color: #95FF00;
-                    font-weight: 800;
-                    text-shadow: -1px 0 #404040, 0 1px #404040, 1px 0 #404040, 0 -1px #404040;
-                    transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
-                }
-            }
-
-            &.navbar__item--active .navbar__link{
-                text-shadow: -1px 0 #404040, 0 1px #404040, 1px 0 #404040, 0 -1px #404040;
-                color: #95FF00;
-                font-weight: 600;
-
-                &:hover, &:focus{
-                    font-weight: 800;
-                }
-            }
-        }
-
-        &--open{
-            .navbar__title{
-                color: #95FF00;
-            }
-        }
+    &--open {
+      .navbar__title {
+        color: #95ff00;
+      }
     }
+  }
 }
-
 
 @media only screen and (min-width: 1000px) and (max-width: 1240px) {
-    .page__container{
-        .navbar__title{
-            letter-spacing: 0px;
-        }
+  .page__container {
+    .navbar__title {
+      letter-spacing: 0px;
     }
+  }
 }
