@@ -78,6 +78,7 @@ html {
           aspect-ratio: 16/9;
           width: 100%;
           height: 100%;
+          border:none;
         }
 
         canvas {
@@ -326,15 +327,15 @@ html {
           width: 80%;
 
           iframe {
-            aspect-ratio: 16/9;
             width: 65%;
-            height: 100%;
           }
 
           canvas {
             border-radius: 35px;
             transform: rotate(90deg);
             width: 50%;
+            // TODO: check max width
+            max-width: 700px;
           }
 
           .content__block {
