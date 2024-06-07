@@ -89,115 +89,115 @@ $(".navbar__close").click(function () {
 
 var timeline = gsap.timeline();
 
-// timeline.fromTo(
-//   ".animation .title",
-//   {
-//     opacity: 0,
-//   },
-//   {
-//     opacity: 1,
-//     duration: 1,
-//     ease: "power1.out",
-//   },
-//   "0"
-// );
-// timeline.fromTo(
-//   ".animation .title",
-//   {
-//     top: "50%",
-//     duration: 2,
-//   },
-//   {
-//     opacity: 1,
-//     top: "35%",
-//     duration: 1,
-//     ease: "power1.out",
-//     delay: 1,
-//   },
-//   ">"
-// );
-// timeline.fromTo(
-//   ".animation .subtitle",
-//   {
-//     opacity: 0,
-//     visibility: "hidden",
-//     height: 0,
-//     duration: 1,
-//   },
-//   {
-//     opacity: 1,
-//     visibility: "visible",
-//     height: "auto",
-//     duration: 1,
-//     ease: "power1.out",
-//   },
-//   ">"
-// );
-// timeline.to(
-//   ".animation .title",
-//   {
-//     opacity: 0,
-//     duration: 0.5,
-//     delay: 1.5,
-//     ease: "power1.out",
-//   },
-//   ">"
-// );
-// timeline.to(
-//   ".animation .subtitle",
-//   {
-//     opacity: 0,
-//     duration: 0.5,
-//     ease: "power1.out",
-//   },
-//   "<"
-// );
-// timeline.to(
-//   ".animation .title",
-//   {
-//     visibility: "hidden",
-//     height: 0,
-//     duration: 0,
-//   },
-//   ">"
-// );
-// timeline.to(
-//   ".animation .subtitle",
-//   {
-//     visibility: "hidden",
-//     height: 0,
-//     duration: 0,
-//   },
-//   "<"
-// );
-// timeline.to(
-//   ".animation",
-//   {
-//     display: "none",
-//   },
-//   ">"
-// );
-// timeline.from(
-//   ".page__container",
-//   {
-//     opacity: 0,
-//     duration: 1,
-//     ease: "power1.out",
-//   },
-//   ">"
-// );
-// timeline.fromTo(
-//   ".phone-nav",
-//   {
-//     opacity: 0,
-//     duration: 1,
-//     ease: "power1.out",
-//   },
-//   {
-//     opacity: 1,
-//   },
-//   "<"
-// );
+timeline.fromTo(
+  ".animation .title",
+  {
+    opacity: 0,
+  },
+  {
+    opacity: 1,
+    duration: 1,
+    ease: "power1.out",
+  },
+  "0"
+);
+timeline.fromTo(
+  ".animation .title",
+  {
+    top: "50%",
+    duration: 2,
+  },
+  {
+    opacity: 1,
+    top: "35%",
+    duration: 1,
+    ease: "power1.out",
+    delay: 1,
+  },
+  ">"
+);
+timeline.fromTo(
+  ".animation .subtitle",
+  {
+    opacity: 0,
+    visibility: "hidden",
+    height: 0,
+    duration: 1,
+  },
+  {
+    opacity: 1,
+    visibility: "visible",
+    height: "auto",
+    duration: 1,
+    ease: "power1.out",
+  },
+  ">"
+);
+timeline.to(
+  ".animation .title",
+  {
+    opacity: 0,
+    duration: 0.5,
+    delay: 1.5,
+    ease: "power1.out",
+  },
+  ">"
+);
+timeline.to(
+  ".animation .subtitle",
+  {
+    opacity: 0,
+    duration: 0.5,
+    ease: "power1.out",
+  },
+  "<"
+);
+timeline.to(
+  ".animation .title",
+  {
+    visibility: "hidden",
+    height: 0,
+    duration: 0,
+  },
+  ">"
+);
+timeline.to(
+  ".animation .subtitle",
+  {
+    visibility: "hidden",
+    height: 0,
+    duration: 0,
+  },
+  "<"
+);
+timeline.to(
+  ".animation",
+  {
+    display: "none",
+  },
+  ">"
+);
+timeline.from(
+  ".page__container",
+  {
+    opacity: 0,
+    duration: 1,
+    ease: "power1.out",
+  },
+  ">"
+);
+timeline.fromTo(
+  ".phone-nav",
+  {
+    opacity: 0,
+    duration: 1,
+    ease: "power1.out",
+  },
+  {
+    opacity: 1,
+  },
+  "<"
+);
 
 changeColorIfVisible();
 highlightCurrentSection();
