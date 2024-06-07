@@ -151,6 +151,11 @@ html {
               background-color: transparent;
               transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
 
+              option{
+                background-color: #f3f3f3;
+                color: #404040;
+              }
+
               &:hover,
               &:focus {
                 background-image: linear-gradient(
@@ -162,6 +167,11 @@ html {
                 transition: all 0.2s cubic-bezier(0.45, 0, 0.55, 1);
                 color: #404040;
                 background-color: #95ff00;
+
+                option{
+                  background-color: #f3f3f3;
+                  color: #404040;
+                }
               }
             }
 
