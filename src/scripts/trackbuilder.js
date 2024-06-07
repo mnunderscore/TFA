@@ -404,20 +404,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
-    const realWidth = Math.round(w * 0.25);
+    const realWidth = Math.round(w * 0.8);
     const realHeight = realWidth;
 
     const canvasSetup = () => {
-      canvas.width = realWidth * dpr;
-      canvas.height = realHeight * dpr;
-
-      // canvas.style.width = `${realWidth}px`;
-      // canvas.style.height = `${realHeight}px`;
-
-      canvas.style.transform = "rotate(0deg)";
-      canvas.style.webkitTransform = "rotate(0deg)";
-
-      ctx.scale(dpr, dpr);
+      canvas.width = realWidth;
+      canvas.height = realHeight;
 
       body.appendChild(canvas);
     };

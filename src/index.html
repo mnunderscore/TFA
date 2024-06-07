@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="styles/app.css" type="text/css">
+    <link rel="stylesheet" href="styles/app.css" type="text/css" />
     <script src="scripts/app.js" defer></script>
   </head>
   <body class="page">
-    <div class="animation">
+    <!-- <div class="animation">
       <h1 class="title">Simracing</h1>
       <h2 class="subtitle">Pourquoi c’est ma passion</h2>
-    </div>
+    </div> -->
     <div class="page__container">
       <div class="right-column">
         <div class="navbar">
@@ -60,7 +60,7 @@
         <div class="content">
           <section class="content__block" id="what">
             <h3 class="content__title">Qu’est-ce que le simracing?</h3>
-            <p class="content__text">
+            <p class="text">
               Le simracing, contraction de simulation et racing (course
               en anglais), est une discipline virtuelle qui reproduit fidèlement
               l’expérience de la course automobile. À l’aide de simulateurs
@@ -68,7 +68,7 @@
               dans des courses virtuelles, que ce soit pour le plaisir,
               l’entraînement ou la compétition.
             </p>
-            <p>
+            <p class="text text--indent">
               Les simulateurs de conduite varient en complexité, allant des
               configurations basiques avec un volant et des pédales à des setups
               sophistiqués comprenant des cockpits réglables, des écrans
@@ -76,7 +76,7 @@
               diversité permet à chacun de créer un environnement de conduite
               adapté à ses besoins et à son budget.
             </p>
-            <p>
+            <p class="text text--indent">
               Le simracing offre une multitude de possibilités, que ce soit pour
               s’affronter en ligne avec d’autres joueurs, participer à des
               championnats virtuels, ou simplement s’entraîner sur des circuits
@@ -87,60 +87,103 @@
           <section class="content__block" id="hardware">
             <h3 class="content__title">Matériel</h3>
 
-            <p>
+            <p class="text">
               Le simracing nécessite un équipement spécifique pour reproduire
               fidèlement l’expérience de la conduite automobile. Voici les
               principaux éléments constitutifs d’un setup de simracing:
             </p>
             <dl>
               <dt>Base:</dt>
-              <dd>
-                La base est le « moteur » qui est entre le volant
-                et l’ordinateur. C’est le « cerveau ». La base reproduit les
-                vibrations, dit retour de force afin de simuler les vibrations
-                de la route, les frottements des pneus, etc.
+              <dd class="content__showcase">
+                <span>
+                  La base est le « moteur » qui est entre le volant
+                  et l’ordinateur. C’est le « cerveau ». La base reproduit les
+                  vibrations, dit retour de force afin de simuler les vibrations
+                  de la route, les frottements des pneus, etc.
+                </span>
+                <img
+                  class="content__image"
+                  src="./assets/images/base.png"
+                  alt="Base de simracing en aluminium, ressemblant à un gros bloc en aluminium"
+                />
               </dd>
 
               <dt>Volant:</dt>
-              <dd>
-                Le volant est l’interface entre le joueur et la base. Il existe
-                une variété de volants disponibles, allant des modèles de base
-                avec quelques boutons aux volants haut de gamme avec écran
-                intégré, boutons et interrupteurs à souhait.
+              <dd class="content__showcase">
+                <span>
+                  Le volant est l’interface entre le joueur et la base.
+                  Il existe une variété de volants disponibles, allant des
+                  modèles de base avec quelques boutons aux volants haut
+                  de gamme avec écran intégré, boutons et interrupteurs
+                  à souhait.
+                </span>
+                <img
+                  class="content__image"
+                  src="./assets/images/volant.png"
+                  alt="Volant de simracing en cuir et plastique, avec des boutons et un petit affichage LED"
+                />
               </dd>
 
               <dt>Pédales:</dt>
-              <dd>
-                Bien sûr, avec le volant, nous avons aussi les pédales.
-                Accélérateur, frein et embrayage, tout ce qu’il faut pour
-                conduire.
+              <dd class="content__showcase">
+                <span>
+                  Bien sûr, avec le volant, nous avons aussi les pédales.
+                  Accélérateur, frein et embrayage, tout ce qu’il faut pour
+                  conduire.
+                </span>
+                <img
+                  class="content__image"
+                  src="./assets/images/pedales.png"
+                  alt="Pédales de simracing en aluminium, avec un accélérateur et un frein"
+                />
               </dd>
 
               <dt>Cockpit:</dt>
-              <dd>
-                Le cockpit permet d’installer les différentes pièces (volant,
-                pédales, etc.) sur un chassis afin de tout garder à portée de
-                main, sur quelque chose de rigide. Les cockpits sont
-                généralement composés d’aluminium.
+              <dd class="content__showcase">
+                <span>
+                  Le cockpit permet d’installer les différentes pièces (volant,
+                  pédales, etc.) sur un chassis afin de tout garder à portée de
+                  main, sur quelque chose de rigide. Les cockpits sont
+                  généralement composés d’aluminium.
+                </span>
+                <img
+                  class="content__image"
+                  src="./assets/images/cockpit.png"
+                  alt="Cockpit de simracing en aluminium, avec volant, pédales, écran panoramique, boite séquentielle, et ordinateur."
+                />
               </dd>
 
               <dt>Écrans ou casque de réalité virtuelle:</dt>
-              <dd>
-                Les écrans ou les casques de réalité virtuelle fournissent
-                la vue du conducteur pendant la course. Les écrans panoramiques
-                ou les casques VR offrent une immersion supplémentaire
-                en reproduisant un champ de vision réaliste.
+              <dd class="content__showcase">
+                <span>
+                  Les écrans ou les casques de réalité virtuelle fournissent
+                  la vue du conducteur pendant la course. Les écrans
+                  panoramiques ou les casques VR offrent une immersion
+                  supplémentaire en reproduisant un champ de vision réaliste.
+                </span>
+                <img
+                  class="content__image"
+                  src="./assets/images/ecran.png"
+                  alt="Écran super ultra-wide"
+                />
               </dd>
 
               <dt>Accessoires:</dt>
-              <dd>
-                D’autres accessoires comme les leviers de vitesses, les freins
-                à main, les supports pour écrans et les systèmes de vibration
-                peuvent améliorer l’expérience de jeu, moyennant un coût
-                supplémentaire.
+              <dd class="content__showcase">
+                <span>
+                  D’autres accessoires comme les leviers de vitesses, les freins
+                  à main, les supports pour écrans et les systèmes de vibration
+                  peuvent améliorer l’expérience de jeu, moyennant un coût
+                  supplémentaire.
+                </span>
+                <img
+                  class="content__image"
+                  src="./assets/images/shifter.png"
+                  alt="Levier de vitesse en H"
+                />
               </dd>
             </dl>
-            <p>
+            <p class="text text--indent">
               Bien sûr, il est tout à fait possible de jouer à la manette; mais
               dû aux physiques avancées des jeux de simracing, il est plus
               compliqué de bien contrôler la voiture.
@@ -149,14 +192,27 @@
 
           <section class="content__block" id="software">
             <h3 class="content__title">Logiciel</h3>
-            <p>
+            <p class="text">
               Il y existe plusieurs jeux propre au simracing, chacun ayant une
               physique différente; mais encore une disponibilité de véhicules
               et de circuits variée.
             </p>
-            <p>Les jeux de simracing les plus populaires incluent:</p>
+            <p class="text">
+              Les jeux de simracing les plus populaires incluent:
+            </p>
             <dl>
               <dt>La série Assetto Corsa</dt>
+              <dd>
+                <img
+                  class="content__image content__image--wide"
+                  src="./assets/images/ac@1x.jpg"
+                  srcset="
+                    ./assets/images/ac@1x.jpg,
+                    ./assets/images/ac@2x.jpg 2x
+                  "
+                  alt="Capture d'écran du jeu Assetto Corsa montrant plusieurs Indy lights se suivant sur un circuit fictif situé dans les rues de Chicago."
+                />
+              </dd>
               <dd>
                 Assetto Corsa est un simulateur de conduite réaliste qui offre
                 une variété de véhicules et de circuits à explorer. Ce jeu se
@@ -173,6 +229,17 @@
               </dd>
               <dt>iRacing</dt>
               <dd>
+                <img
+                  class="content__image content__image--wide"
+                  src="./assets/images/iracing@1x.jpg"
+                  srcset="
+                    ./assets/images/iracing@1x.jpg,
+                    ./assets/images/iracing@2x.jpg 2x
+                  "
+                  alt="Capture d'écran du jeu iRacing montrant plusieurs voitures de type GT3 sur un circuit, sous la pluie."
+                />
+              </dd>
+              <dd>
                 iRacing est un simulateur de course en ligne sur PC qui s’est
                 démarqué par son système de license et son sérieux. En effet,
                 iRacing donne un certain « ranking » avec des points attribués
@@ -185,6 +252,17 @@
 
               <dt>Gran Turismo 7</dt>
               <dd>
+                <img
+                  class="content__image content__image--wide"
+                  src="./assets/images/gt7@1x.jpg"
+                  srcset="
+                    ./assets/images/gt7@1x.jpg,
+                    ./assets/images/gt7@2x.jpg 2x
+                  "
+                  alt="Capture d'écran du jeu Gran Turismo 7 montrant deux voitures de course, côte à côte, sur un Nordschleife ensoleillé."
+                />
+              </dd>
+              <dd>
                 Gran Turismo 7 est un jeu de course automobile disponible sur
                 PS4 et PS5. Ce jeu offre une grande variété de véhicules et de
                 circuits (fictifs et réels) ainsi qu’un mode carrière complet et
@@ -195,18 +273,20 @@
 
           <section class="content__block" id="pilot">
             <h3 class="content__title">PDV Pilote</h3>
-            <p>
+            <p class="text">
               Dans ma « carrière » simracing, j’ai eu l’occasion de conduire sur
               plusieurs simulateurs; mais aussi de participer à des championnats
               et même parfois les organiser. C’est souvent la même chose:
               s’entraîner avec une certaine voiture sur un certain circuit, pour
-              finalement se retrouver en course avec des adversaires. Ce que
-              j’apprécie le plus, c’est la compétition mais aussi le côté
+              finalement se retrouver en course avec des adversaires.
+            </p>
+            <p class="text">
+              Ce que j’apprécie le plus, c’est la compétition mais aussi le côté
               technique de la chose. Par exemple, dans des endurances, il faut
               gérer la consommation d’essence, les pneus, les arrêts aux stands,
               etc.
             </p>
-            <p>
+            <p class="text">
               Vous voulez voir un exemple? Voici une vidéo de moi
               en entraînement:
             </p>
@@ -221,30 +301,28 @@
 
           <section class="content__block" id="commentary">
             <h3 class="content__title">PDV Streaming</h3>
-            <p>
+            <p class="text">
               J’ai aussi réalisé du commentary; c’est à dire commenter des
               courses en direct. Je produis-donc des les directs diffusés sur
               Youtube, et commente par dessus avec un ami.
             </p>
-            <p>Vous voulez un aperçu? Le voici:</p>
-            <!-- TODO: VIDEO -->
-            <!-- <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/1J1J1J1J1J1"
+            <p class="text">
+              Vous voulez un exemple? Voici le replay de dernière manche d’un
+              championnat organisée par moi et un ami:
+            </p>
+            <iframe
+              src="https://www.youtube.com/embed/Y2R0yVMIJ_Y"
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
             >
-            </iframe> -->
+            </iframe>
           </section>
-
-          <!-- TODO: style dropdowns -->
 
           <section class="content__block" id="builder">
             <h3 class="content__title">Track Builder</h3>
-            <p>Bienvenue dans le Track Builder!</p>
-            <p>
+            <p class="text">Bienvenue dans le Track Builder!</p>
+            <p class="text">
               Ceci est petit projet fun créé de toute pièce afin de générer des
               circuits classiques ou sprints de manière aléatoire.
             </p>
@@ -287,7 +365,7 @@
 
       <div class="corner__styling"></div>
     </div>
-    <div class="pop-up__nav">
+    <div class="phone-nav">
       <div class="navbar">
         <p class="navbar__title">Navigation</p>
         <ul class="navbar__list">
@@ -323,6 +401,19 @@
             >
           </p>
         </div>
+        <svg
+          class="navbar__close"
+          clip-rule="evenodd"
+          fill-rule="evenodd"
+          stroke-linejoin="round"
+          stroke-miterlimit="2"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"
+          />
+        </svg>
       </div>
     </div>
   </body>
