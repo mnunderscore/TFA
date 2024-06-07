@@ -41,8 +41,8 @@ html {
   .page__container {
     box-sizing: border-box;
     margin: 10px;
-    width: calc(100vw - 20px);
-    height: calc(100vh - 80px);
+    width: calc(100dvw - 20px);
+    height: calc(100dvh - 80px);
     overflow: hidden;
     background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
       url(../assets/images/bg.jpg) no-repeat center center fixed;
@@ -378,8 +378,8 @@ html {
 
     .page__container {
       margin: 15px;
-      width: calc(100vw - 30px);
-      height: calc(100vh - 30px);
+      width: calc(100dvw - 30px);
+      height: calc(100dvh - 30px);
       border-radius: 50px;
 
       .left-column {
