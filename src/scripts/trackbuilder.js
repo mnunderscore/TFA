@@ -423,44 +423,44 @@ document.addEventListener("DOMContentLoaded", function () {
         row.map((cell) => {
           switch (cell) {
             case 1:
-              return { src: "/assets/images/straight.svg", rotation: 0 };
+              return { src: "./assets/images/straight.svg", rotation: 0 };
             case 2:
               return {
-                src: "/assets/images/straight.svg",
+                src: "./assets/images/straight.svg",
                 rotation: Math.PI / 2,
               };
             case 3:
-              return { src: "/assets/images/corner.svg", rotation: 0 };
+              return { src: "./assets/images/corner.svg", rotation: 0 };
             case 4:
               return {
-                src: "/assets/images/corner.svg",
+                src: "./assets/images/corner.svg",
                 rotation: Math.PI / 2,
               };
             case 5:
-              return { src: "/assets/images/corner.svg", rotation: Math.PI };
+              return { src: "./assets/images/corner.svg", rotation: Math.PI };
             case 6:
               return {
-                src: "/assets/images/corner.svg",
+                src: "./assets/images/corner.svg",
                 rotation: (3 * Math.PI) / 2,
               };
             case 10:
-              return { src: "/assets/images/sprint.svg", rotation: 0 };
+              return { src: "./assets/images/sprint.svg", rotation: 0 };
             case 11:
               return {
-                src: "/assets/images/sprint.svg",
+                src: "./assets/images/sprint.svg",
                 rotation: Math.PI / 2,
               };
             case 12:
-              return { src: "/assets/images/sprint.svg", rotation: Math.PI };
+              return { src: "./assets/images/sprint.svg", rotation: Math.PI };
             case 13:
               return {
-                src: "/assets/images/sprint.svg",
+                src: "./assets/images/sprint.svg",
                 rotation: (3 * Math.PI) / 2,
               };
             case 96:
-              return { src: "/assets/images/start.svg", rotation: 0 };
+              return { src: "./assets/images/start.svg", rotation: 0 };
             case 97:
-              return { src: "/assets/images/start.svg", rotation: Math.PI / 2 };
+              return { src: "./assets/images/start.svg", rotation: Math.PI / 2 };
             default:
               return "rgba(255, 255, 255, 0.0)";
           }
