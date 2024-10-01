@@ -71,7 +71,6 @@ function highlightCurrentSection() {
   }
 }
 
-//when user clicks on pop-up title, open the navigation menu
 $(".navbar__title").click(function () {
   $(".navbar").toggleClass("navbar--open");
   $(".page__container").toggleClass("page__container--open");
@@ -185,6 +184,18 @@ timeline.from(
     ease: "power1.out",
   },
   ">"
+);
+timeline.fromTo(
+  ".left-column",
+  {
+    "overflow-y": "hidden",
+    duration: 1,
+    ease: "power1.out",
+  },
+  {
+    "overflow-y": "scroll",
+  },
+  "<"
 );
 timeline.fromTo(
   ".phone-nav",
